@@ -1,0 +1,129 @@
+% Encoding: UTF-8
+
+@TechReport{Belshe2015,
+  author      = {M. Belshe},
+  title       = {Hpyertext Transfer Protocol Version 2 (HTTP/2)},
+  institution = {RFC Editor},
+  year        = {2015},
+  file        = {:rfc7540.txt.pdf:PDF},
+  review      = {Internet Engineering Task Force (IETF)                         M. Belshe
+Request for Comments: 7540                                         BitGo
+Category: Standards Track                                        R. Peon
+ISSN: 2070-1721                                              Google, Inc
+                                                         M. Thomson, Ed.
+                                                                 Mozilla
+                                                                May 2015
+
+             Hypertext Transfer Protocol Version 2 (HTTP/2)
+
+Abstract
+
+   This specification describes an optimized expression of the semantics
+   of the Hypertext Transfer Protocol (HTTP), referred to as HTTP
+   version 2 (HTTP/2).  HTTP/2 enables a more efficient use of network
+   resources and a reduced perception of latency by introducing header
+   field compression and allowing multiple concurrent exchanges on the
+   same connection.  It also introduces unsolicited push of
+   representations from servers to clients.
+
+   This specification is an alternative to, but does not obsolete, the
+   HTTP/1.1 message syntax.  HTTP’s existing semantics remain unchanged.
+
+Status of This Memo
+
+   This is an Internet Standards Track document.
+
+   This document is a product of the Internet Engineering Task Force
+   (IETF).  It represents the consensus of the IETF community.  It has
+   received public review and has been approved for publication by the
+   Internet Engineering Steering Group (IESG).  Further information on
+   Internet Standards is available in Section 2 of RFC 5741.
+
+   Information about the current status of this document, any errata,
+   and how to provide feedback on it may be obtained at
+   http://www.rfc-editor.org/info/rfc7540.
+
+Belshe, et al.               Standards Track                    [Page 1]
+
+},
+}
+
+@TechReport{Carpenter2011,
+  author      = {B. Carpenter},
+  title       = {Recommendations of a committee on RFC citation issues draft-carpenter-rfc-citation-recs-0},
+  institution = {RFC Editor},
+  year        = {2011},
+  file        = {:draft-carpenter-rfc-citation-recs-01.pdf:PDF},
+  owner       = {mh},
+  timestamp   = {2017.11.02},
+}
+
+@TechReport{Fielding1999,
+  author      = {Fielding, R., Gettys, J., Mogul, J., Frystyk, H., Masinter, L., Leach, P., and T. Berners-Lee},
+  title       = {Hypertext Transfer Protocol -- HTTP/1.1},
+  institution = {RFC Editor},
+  year        = {1999},
+  abstract    = {The Hypertext Transfer Protocol (HTTP) is an application-level protocol for distributed, collaborative, hypermedia
+information systems. It is a generic, stateless, protocol which can be used for many tasks beyond its use for
+hypertext, such as name servers and distributed object management systems, through extension of its request
+methods, error codes and headers [47]. A feature of HTTP is the typing and negotiation of data representation,
+allowing systems to be built independently of the data being transferred.
+},
+  file        = {:rfc2616.pdf:PDF},
+  review      = {Network Working Group                                             R. Fielding
+Request for Comments: 2616                                          UC Irvine
+Obsoletes: 2068                                                     J. Gettys
+Category: Standards Track                                          Compaq/W3C
+                                                                  J. C. Mogul
+                                                                       Compaq
+                                                                   H. Frystyk
+                                                                      W3C/MIT
+                                                                  L. Masinter
+                                                                        Xerox
+                                                                     P. Leach
+                                                                    Microsoft
+                                                               T. Berners-Lee
+                                                                      W3C/MIT
+                                                                   June, 1999
+
+Hypertext Transfer Protocol -- HTTP/1.1
+Status of this Memo
+This document specifies an Internet standards track protocol for the Internet community, and requests discussion and
+suggestions for improvements. Please refer to the current edition of the “Internet Official Protocol Standards” (STD
+1) for the standardization state and status of this protocol. Distribution of this memo is unlimited.
+
+Copyright Notice
+Copyright (C) The Internet Society (1999). All Rights Reserved.
+
+Abstract
+The Hypertext Transfer Protocol (HTTP) is an application-level protocol for distributed, collaborative, hypermedia
+information systems. It is a generic, stateless, protocol which can be used for many tasks beyond its use for
+hypertext, such as name servers and distributed object management systems, through extension of its request
+methods, error codes and headers [47]. A feature of HTTP is the typing and negotiation of data representation,
+allowing systems to be built independently of the data being transferred.
+
+HTTP has been in use by the World-Wide Web global information initiative since 1990. This specification defines
+the protocol referred to as “HTTP/1.1”, and is an update to RFC 2068 [33].
+
+Fielding, et al Standards Track [Page 1]
+
+},
+}
+
+@TechReport{Berners-Lee1996,
+  author = {Berners-Lee, T., Fielding, R., and H. Frystyk},
+  title  = {Hypertext Transfer Protocol -- HTTP/1.0},
+  year   = {1996},
+  file   = {:rfc1945.txt.pdf:PDF},
+}
+
+@Book{Sikora2003,
+  title     = {Technische Grundlagen der Rechnerkommunikation},
+  publisher = {Fachbuchverl. Leipzig im Carl Hanser Verl.},
+  year      = {2003},
+  author    = {Sikora, Axel},
+  owner     = {mh},
+  timestamp = {2017.11.02},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}

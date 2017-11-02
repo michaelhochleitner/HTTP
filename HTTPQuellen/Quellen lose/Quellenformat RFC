@@ -1,0 +1,14 @@
+@techreport{rfc1654,
+   AUTHOR = "Yakov Rekhter and Tony Li",
+   TITLE = "{A Border Gateway Protocol 4 (BGP-4)}",
+   HOWPUBLISHED = {Internet Requests for Comments},
+   TYPE="{RFC}",
+   NUMBER=1654,
+   PAGES = {1-56},
+   YEAR = {1995},
+   MONTH = {July},
+   ISSN = {2070-1721},
+   PUBLISHER = "{RFC Editor}",
+   INSTITUTION = "{RFC Editor}",
+   URL={http://www.rfc-editor.org/rfc/rfc1654.txt}
+   }

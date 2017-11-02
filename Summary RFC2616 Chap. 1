@@ -1,0 +1,10 @@
+Hypertext Transfer Protocol
+Anwendungsschicht
+verteilte, kollaborative, Hypermedia Informationssysteme
+
+Die Anzahl der Methoden und Header in einer Nachricht nach HTTP-Protokoll ist offen. Mit Methoden und Headern wird die Absicht einer Anfrage klar gemacht. Die Ressource auf die eine Methode angewandt wird, die durch eine URL oder URN identifiziert wird. Das Format der Nachrichten ähnelt dem von Emails. Das Email Format wird unter anderem durch die Multipurpose Internet Mail Extensions definiert.
+
+Das HTTP beschreibt wie Messages aussehen sollen. Seit HTTP/1.0 enthalten Messages Metainformationen über die Daten in der Message. Außerdem kann man seit HTTP/1.0 die Semantik von Request und Response modifizieren. 
+
+HTTP ist ein request/response protocol. Ein Client schickt eine Anfrage an einen Server. Die Anfrage besteht aus einer Anfrage Method, einer URI, der Protokollversion und eine MIME-ähnliche Nachricht. Die MIME-ähnliche Nachricht enthält request modifier, Informationen über den Client und möglicherweise body content.
+

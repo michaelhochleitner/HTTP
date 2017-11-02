@@ -1,0 +1,19 @@
+Was ist Hypermedia? Zusammengesetzt aus Hypertext und Multimedia. Hypertext ist ein Text mit netzförmiger Struktur. Mehrere Internetseiten, die miteinander verlinkt sind, sind ein Hypertext. Die Internetseiten sind dabei die Knoten. Die Kanten, die die Internetseiten verbinden sind Hyperlink-Kanten. Statisch gedruckte Publikationen sind dagegen linear sequenziell. In einem Hypermedium führen Hyperlinks nicht nur zu Texten, sondern auch zu anderen Medien wie Videos, Grafiken und Audiodateien.
+
+https://de.wikipedia.org/wiki/Kommunikationsprotokoll
+In der Informatik und in der Telekommunikation ist ein Kommunikationsprotokoll eine Vereinbarung, nach der die Datenübertragung zwischen zwei oder mehreren Parteien abläuft. Ein Protokoll ist eine Menge von Regeln, die die Syntax, Semantik und Synchronisation der Kommunikation bestimmen.
+Regelt das Protokoll die Kommunikation in einem Rechnernetz, so spricht man von einem Netzwerkprotokoll.
+https://de.wikipedia.org/wiki/Netzwerkprotokoll
+Die Einheiten, in denen Rechner Daten austauschen heißen Datenpakete. In einem Protokoll wird festgelegt, dass bestimmte Informationen in einem Datenpaket enthalten sein müssen. Das können z.B. folgende sein.
+Absender und Empfänger
+Nutzen des Pakets: z.B. Verbindungsaufbau, Verbindungsabbau oder Nutzdaten
+Paketgröße
+Wenn die Übertragung aus mehreren Paketen besteht die Nummer des aktuellen Pakets und die Gesamtzahl der Pakete
+Prüfsumme  
+
+
+
+
+Intepretation:
+Ein Protokoll gibt vor wie die Datenpakete zwischen Computern aussehen sollen, damit die Kommunikation funktioniert. Vergleich: Briefpost. Hier gibt es das Protokoll, dass der Empfänger links oben und der Absender rechts unten stehen muss und die Briefmarke rechts oben sein soll. Solche Informationen sind bei Datenpaketen im Header oder Trailer. 
+

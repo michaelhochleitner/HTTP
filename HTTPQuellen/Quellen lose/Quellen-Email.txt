@@ -1,0 +1,22 @@
+Hallo Michael,
+
+du hast den Vortrag "HTTP / HTTP/2". Anbei sind einige Quellen zum
+Einstieg (die natürlich noch durch eigene Recherche ergänzt werden
+müssen) und die LaTeX-Vorlage für die Ausarbeitung.
+
+- https://tools.ietf.org/html/rfc2616
+- https://http2.github.io/faq/
+- http://httpwg.org/specs/rfc7540.html
+
+Die RFCs sind beide sehr umfangreich. Wir erwarten nicht, dass du diese
+komplett liest, aber  um einen Überblick über das Protokoll zu bekommen,
+sind sie ganz nützlich. Wichtige Kapitel im RFC2616 sind unserer Meinung
+nach 1, 4, 9, 10 und ausgewählte Header-Fields (hier Kapitel 14), die du
+dir wohl besser aus einer anderen Quelle ziehst.
+
+Für HTTP/2 ist hauptsächlich wichtig, dass rauskommt, welche Probleme
+von HTTP damit angegangen und wie gelöst werden.
+
+Viele Grüße
+Basti und Martin
+
