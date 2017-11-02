@@ -126,4 +126,22 @@ Fielding, et al Standards Track [Page 1]
   timestamp = {2017.11.02},
 }
 
+@Electronic{,
+  author    = {D. Stenberg},
+  title     = {HTTP2 Explained},
+  url       = {http://http2-explained.haxx.se/content/en/part5.html},
+  file      = {:http2-explained-en.pdf:PDF},
+  owner     = {mh},
+  timestamp = {2017.11.02},
+}
+
+@InProceedings{MatteoVarvello2016,
+  author    = {Matteo Varvello, Kyle Schomp, David Naylor, Jeremy Blackburn, Alessandro Finamore, and Konstantina Papagiannaki},
+  title     = {Is the Web HTTP/2 Yet?},
+  booktitle = {Passive and Active Measurement},
+  year      = {2016},
+  owner     = {mh},
+  timestamp = {2017.11.02},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
