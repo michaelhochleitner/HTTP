@@ -1,0 +1,7 @@
+Im HTTP-Request wird oft eine Ressource angefordert. Dafür muss der Aufenthaltsort der Ressource klar sein. Die Ressource liegt auf irgendeinem Host-Rechner. Der wird durch eine IP angegeben und einen Port auf der IP. Eigentlich wäre das schon genug. Aber es kann auf einem physischen Rechner, der eine IP hat mehrere Domain-Namen geben. Dann heißen sie Namensbasierte virtuelle Hosts.
+de.wikipedia sagt: "Wenn von einer einzelnen Maschine unterschiedliche Dienste angeboten werden sollen, die jeweils ihr eigenes Betriebssystemumfeld benötigen."
+
+en.wikipdia sagt: "This allows one server to share its resources, such as memory and processor cycles, without requiring all services provided to use the same host name."
+
+Quellen: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Host
+ 
