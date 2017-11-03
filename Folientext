@@ -2,9 +2,25 @@ Folie 1: Titel und Name
 Kann ich anfangen? Ja. Ok.
 Mein Name ist Michael Hochleitner und mein Thema ist HTTP und HTTP/2.
 
-Folie 2: Was ist HTTP
+Folie 2: Was ist HTTP?
 Erstmal ein kurzer Überblick. HTTP steht für Hypertext Transfer Protokoll. Es ist ein Protokoll für Rechnernetze. Rechnernetze stellen Dienste bereit. Beispiele für Dienste: Webseiten anschauen, Dokumente herunterladen. Die Beispiele beziehen sich aufs Internet, das auch ein Rechnernetz ist. Was ist das Verhältnis von Dienst und Protokoll? Das kann ich aus Koenig2003 entnehmen.
 
-Folie 3: Versionsgeschichte
-Was hat HTTP/0.9
+Folie 3: Was machen Protokolle?
+Protokolle definieren Regeln zur Kommunikation. Kommunikation bedeutet hier, dass Dateneinheiten von einem Rechner zum anderen geschickt werden. Ein Beispiel für ein Protokoll bei der Kommunikation zwischen Menschen ist "Roger" und "Over" aus dem Funksprechverkehr. Hier bedeutet Roger, dass man die letzte Nachricht verstanden hat und "Over" steht dafür, dass man die Sprechrichtung wechselt. Dazu gehören z.B. Regeln, die Aussagen über das Format der Dateneinheiten machen, die ausgetauscht werden, Regeln zur Codierung und Decodierung und Regeln die Beschreiben, wie man mit Übertragungsfehlern umgeht.  
+
+Folie 3: Anforderungen an HTTP
+Die Verwendung von Rechnernetzen hat sich über die Zeit gewandelt. Z.B. sind die Dienste, die heute auf dem Internet aufbauen vielfältiger als 1990.
+
+1990 wurde die erste Version von http implementiert. Die Anforderung war simpel: Übertragung einer html-Datei. Keine anderen Dateitypen konnten übertragen werden. Die Antwort war die angeforderte HTMl-Datei. Wenn einer Fehler auftrat, wurde eine spezielle HTML-Datei zurückgesendet, in der Stand, das ein Fehler aufgetreten ist.
+Was hier nicht implementiert wurde ist: Format der Dateneinheiten. Es gab nur ein Format. Kodierung und Dekodierung gab es nicht. Umgang mit Übertragungsfehlern war da.
+
+1996 RFC 1945
+Nach einer Phase von trial and error: Server und Browser haben HTTP erweitert und ausprobiert, ob die Erweiterungen benutzt werden, kam mit dem RFC1945 eine Definition von HTTP/1.0. Jetzt wurde die Protkollversion mit übertragen, die Response hatte einen Status-Code, die enthielt, ob eine Anfrag erfolgreich oder nicht erfolgreich war. Metadaten über die Datenpakete.
+
+
+
+
+
+
+
 
