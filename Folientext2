@@ -1,0 +1,4 @@
+Hallo, mein Name ist Michael Hochleitner und mein Thema ist HTTP und HTTP2.
+HTTP steht für Hypertext Transfer Protocol und es ist ein Protokoll für Rechnernetze. In Rechnernetzen möchte man Daten von einem Rechner zum anderen schicken. Es sind also zwei Rechner beteiligt. Ein Empfänger und ein Sender. HTTP spezifiziert wie die Datenpakete aussehen müssen.
+
+Anwendungsbeispiel: Hier sind zwei Datenpakete abgebildet, die mit HTTP/0.9 konform sind. Hier schickt der Client eine Anfrage und der Server schickt eine Antwort zurück. Die Absicht der Anfrage ist eine HTML-Datei zu bekommen. Deswegen die Methode GET und die Angabe der Ressource. Der Antwort besteht nur aus der angefragten Datei. 
