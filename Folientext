@@ -5,6 +5,27 @@ Mein Name ist Michael Hochleitner und mein Thema ist HTTP und HTTP/2. Wenn ihr w
 Folie 2: Was ist HTTP?
 HTTP steht für Hypertext Transfer Protokoll. Es ist ein Protokoll für Rechnernetze. In Rechnernetzen wollen wir zwischen Rechnern, die ins Netz eingebunden sind Datenpakete austauschen. Es können z.B. Client und Server durch das Netz verbunden sein. Was HTTP dabei für uns macht ist spezifizieren wie die Datenpakete aussehen sollen. 
 
+Folie 3: Hier sind zwei Beispiele für Datenpakete. Eine Anfrage, die ein Client an einen Server stellen könnte und die Antwort des Servers. Was man hier schön sehen kann: HTTP ist ein Textprotokoll. Das bedeutet wir haben hier keine Bits, sondern ASCII-Zeichen und es ist vom Menschen lesbar. Und es ist ein Request-Response-Protocol. Das bedeutet die Kommunikation geht in zwei Richtungen: Vom Client zum Server und zurück. Das ist nicht bei allen Protokollen so. Beim UDP-Protokoll geht die Kommunikation nur in eine Richtung.
+Beispiele erfüllen die Spezifikationen eines Prototyps für das HTTP-Protokoll von 1991. Man kann das Protokoll immer noch benutzen. -> Beispiel vorführen.
+
+Folie 4: Anforderungen an den Prototyp
+    Client-server, request-response protocol.
+    ASCII protocol, running over a TCP/IP link.
+    Designed to transfer hypertext documents (HTML).
+    $$The connection between server and client is closed after every request.$$ -> Wichtig für die folgenden Themen.
+	Einschränkungen: Für jede Datei, die übertragen wird, muss eine neue Verbindung aufgebaut werden.
+
+Neue Anforderungen:
+connection reuse
+we needed a protocol that could
+serve more than just hypertext documents
+provide richer metadata about the request and the response
+enable content negotiation
+
+
+Folie 5: HTTP/1.1
+
+
 
 Folie 3: Was machen Protokolle?
 Protokolle definieren Regeln zur Kommunikation. Kommunikation bedeutet hier, dass Dateneinheiten von einem Rechner zum anderen geschickt werden. Ein Beispiel für ein Protokoll bei der Kommunikation zwischen Menschen ist "Roger" und "Over" aus dem Funksprechverkehr. Hier bedeutet Roger, dass man die letzte Nachricht verstanden hat und "Over" steht dafür, dass man die Sprechrichtung wechselt.
