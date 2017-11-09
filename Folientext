@@ -1,9 +1,9 @@
 Folie 1: Titel und Name
 Kann ich anfangen? Ja. Ok.
-Mein Name ist Michael Hochleitner und mein Thema ist HTTP und HTTP/2.
+Mein Name ist Michael Hochleitner und mein Thema ist HTTP und HTTP/2. Wenn ihr während des Vortrags Fragen habt, könnt ihr mich gerne unterbrechen. 
 
 Folie 2: Was ist HTTP?
-Hier ist ein kurzer Überblick über HTTP. HTTP steht für Hypertext Transfer Protokoll. Es ist ein Protokoll für Rechnernetze. Rechnernetze stellen Dienste bereit. Beispiele für Dienste: Webseiten anschauen, Dokumente herunterladen. Die Beispiele beziehen sich aufs Internet, das auch ein Rechnernetz ist. Für die Dienste ist Kommunikation zwischen Rechnern notwendig.
+HTTP steht für Hypertext Transfer Protokoll. Es ist ein Protokoll für Rechnernetze. In Rechnernetzen wollen wir zwischen Rechnern, die ins Netz eingebunden sind Datenpakete austauschen. Es können z.B. Client und Server durch das Netz verbunden sein. Was HTTP dabei für uns macht ist spezifizieren wie die Datenpakete aussehen sollen. 
 
 
 Folie 3: Was machen Protokolle?
