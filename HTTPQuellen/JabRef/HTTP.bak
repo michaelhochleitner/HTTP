@@ -178,4 +178,13 @@ Fielding, et al Standards Track [Page 1]
   timestamp    = {2017.11.03},
 }
 
+@Electronic{,
+  author       = {Ilya Grigorik},
+  title        = {Brief History of HTTP},
+  organization = {w3c},
+  url          = {https://hpbn.co/brief-history-of-http/},
+  owner        = {mh},
+  timestamp    = {2017.11.09},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
