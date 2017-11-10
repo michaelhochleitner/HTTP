@@ -25,7 +25,7 @@ Beispiele für Header:
 	Request Header: Accept Header
 	Response Header: Location
 
-TODO: Methoden, HTTP2, Rausfinden was ich noch vorstellen muss
+TODO: Methoden, Data compression of Headers, Server Push, Pipelining, head of line blocking, multiplexing
 
 
 	
