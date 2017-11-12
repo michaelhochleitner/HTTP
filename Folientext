@@ -1,31 +1,46 @@
-Folie 1: Titel und Name
+1: Setup
+
+2: Titel und Name
 Kann ich anfangen? Ja. Ok.
 Mein Name ist Michael Hochleitner und mein Thema ist HTTP und HTTP/2. Wenn ihr während des Vortrags Fragen habt, könnt ihr mich gerne unterbrechen. 
 
-Folie 2: Was ist HTTP?
+3: Was ist HTTP?
 HTTP steht für Hypertext Transfer Protokoll. Es ist ein Protokoll für Rechnernetze. In Rechnernetzen wollen wir zwischen Rechnern, die ins Netz eingebunden sind Datenpakete austauschen. Es können z.B. Client und Server durch das Netz verbunden sein. Was HTTP dabei für uns macht ist spezifizieren wie die Datenpakete aussehen sollen. 
 
-Folie 3: Hier sind zwei Beispiele für Datenpakete. Das Protokoll an das sie sich halten, ist der erste Prototyp von HTTP. Man nennt den Prototyp HTTP/0.9 . Eine Anfrage, die ein Client an einen Server stellen könnte und die Antwort des Servers. Was man hier schön sehen kann: HTTP ist ein Textprotokoll. Das bedeutet wir haben hier keine Bits, sondern ASCII-Zeichen und es ist vom Menschen lesbar. Und es ist ein Request-Response-Protocol. Das bedeutet die Kommunikation geht in zwei Richtungen: Vom Client zum Server und zurück. Das ist nicht bei allen Protokollen so. Beim UDP-Protokoll (User Datagram Protocol) geht die Kommunikation nur in eine Richtung. In der Anfrage gibt es die Methode GET. Das ist auch die einzig mögliche Methode in HTTP/0.9. Get bedeutet, dass sich der Client eine Datei vom Server holen will. Als Argument hat die GET-Methode die Ressource, die der Client haben will. Das ist in diesem Fall eine HTML-Datei. Man kann hier direkt auf die Ordnerstruktur des Servers zugreifen, weil die IP und der Port schon durch die TCP-Verbindung auf der HTTP aufbaut bekannt ist. Z.B. eine telnet Verbindung, die TCP benutzt.
+4: Hier sind zwei Beispiele für Datenpakete. Das Protokoll an das sie sich halten, ist der erste Prototyp von HTTP. Man nennt den Prototyp HTTP/0.9 . Eine Anfrage, die ein Client an einen Server stellen könnte und die Antwort des Servers. Was man hier schön sehen kann: HTTP ist ein Textprotokoll. Das bedeutet wir haben hier keine Bits, sondern ASCII-Zeichen und es ist vom Menschen lesbar. Und es ist ein Request-Response-Protocol. Das bedeutet die Kommunikation geht in zwei Richtungen: Vom Client zum Server und zurück. Das ist nicht bei allen Protokollen so. Beim UDP-Protokoll (User Datagram Protocol) geht die Kommunikation nur in eine Richtung. In der Anfrage gibt es die Methode GET. Das ist auch die einzig mögliche Methode in HTTP/0.9. Get bedeutet, dass sich der Client eine Datei vom Server holen will. Als Argument hat die GET-Methode die Ressource, die der Client haben will. Das ist in diesem Fall eine HTML-Datei. Man kann hier direkt auf die Ordnerstruktur des Servers zugreifen, weil die IP und der Port schon durch die TCP-Verbindung auf der HTTP aufbaut bekannt ist. Z.B. eine telnet Verbindung, die TCP benutzt.
 Beispiele erfüllen die Spezifikationen eines Prototyps für das HTTP-Protokoll von 1991. Man kann das Protokoll immer noch benutzen.
 
-Folie 4: Grenzen von HTTP/0.9
+5: Grenzen von HTTP/0.9
 Nach einer Anfrage kann im besten Fall eine Datei übertragen werden. Es muss also für jede angefragte Datei eine neue Verbindung aufgebaut werden. Bei vielen Dateien muss die Verbindung also immer wieder aufgebaut werden. Das kostet Zeit. 
 Man konnte nur eine Art von Dateien übertragen: HTML. Im Fall, dass die angefragte Datei nicht vorhanden ist, wurde eine spezielle HTML-Seite gesendet.
 
-Folie 5: HTTP/1.1
-Nach ein paar Jahren gab es dann die erste standardisierte Version von HTTP. Die heißt HTTP/1.1. Da wurden die Probleme gelöst, die HTTP/0.9 hatte. Es gibt jetzt Metadaten, die es möglich machen verschiedene Dateitypen zu versenden. Es gibt Status Codes, die der Server versenden kann, wenn Probleme auftreten, man kann Verbindungen für mehrere Anfragen wiederverwenden. Und es gibt Pipelining. Pipelining bedeutet, dass in einer Verbindung ein neuer Request geschickt werden kann, bevor der vorherige Request bearbeitet ist. Die beiden unteren Stichpunkte verbessern die Performance. Das wiederholt sich bei jeder Veränderung des HTTP-Protokolls. Performance ist also ein wichtiges Thema.
+6: HTTP/1.1
+Nach ein paar Jahren gab es dann die erste standardisierte Version von HTTP. Die heißt HTTP/1.1. HTTP/1.1 hat viele Neuerungen gegenüber HTTP/0.9. Unter anderem wurden die Probleme gelöst, die HTTP/0.9 hatte. Es gibt jetzt Metadaten, die es möglich machen verschiedene Dateitypen zu versenden. Es gibt Status Codes, die der Server versenden kann, wenn Probleme auftreten und man kann Verbindungen für mehrere Anfragen wiederverwenden. Und es gibt Pipelining. Pipelining bedeutet, dass in einer Verbindung ein neuer Request geschickt werden kann, bevor der vorherige Request bearbeitet ist. Die beiden unteren Stichpunkte verbessern die Performance. Das wiederholt sich bei jeder Veränderung des HTTP-Protokolls. Performance ist also ein wichtiges Thema.
 
-Folie 6: Metainformationen: Header
-Es gibt 4 Arten von Headern. Wie gesagt sind Header Metadaten. Der Unterschied zwischen den Klassen ist worüber der Header Informationen gibt. Allgemeine Header können in Anfragen und Antworten benutzt werden. Sie beziehen sich nur auf die Nachricht und nicht auf die Entity/Body/Payload.
+7: Metainformationen: Header
+Es gibt 4 Arten von Headern. Wie gesagt sind Header Metadaten. Der Unterschied zwischen den Klassen ist worüber der Header Informationen gibt. Allgemeine Header können in Anfragen und Antworten benutzt werden. Sie beziehen sich nur auf die Nachricht und nicht auf die Entity/Body/Payload. Ein Beispiel dafür ist der Date Header, der angibt an welchem Datum und zu welcher Zeit eine Nachricht losgeschickt wurde.
 Anfrage Headerfelder liefern Informationen über den Client und die Anfrage. Sie sind wie Parameter bei einem Methodenaufruf in einer Programmiersprache.
 Antwort Header liefern Informationen über den Server und darüber wie man auf die angefragte Ressource zugreifen kann. So wie in der Beispielanfrage an Google. Dort ist der Location-Headerfeld ein Antwort Headerfeld. Das Location-Headerfeld gibt an wo sich eine angefragte Ressource befindet. Das ist nötig, wenn man mit einem Request eine Ressource erstellt oder wenn sich die angefragte Ressource an einem anderen Ort ist.
 Ein weiteres Beispiel für ein Headerfeld ist der Accept Header. Er beschreibt welchen Dateityp der Client für eine angefragte Ressource akzeptiert. Ressourcen können auf dem Server in verschiedenen Dateitypen vorliegen.
+Ein Beispiel für ein Entity Headerfeld ist Content-type. Content-type gibt an welches Dateiformat die Datei, die der Server schickt hat. Der Wert von Content-type kann z.B. Aussagen, dass die geschickte Datei eine HTMl-Datei ist und ihr Zeichensatz UTF-8 ist.
 
-Beispiele für Header:
-	Request Header: Accept Header
-	Response Header: Location
+8 Methoden
 
-TODO: Methoden: GET POST PUT HEAD DELETE TRACE CONNECT, Data compression of Headers, Server Push, Pipelining, head of line blocking, multiplexing
+9 HTTP/2
+
+10 Flexibilität und Erweiterbarkeit
+
+11 Datenkompression
+
+12 Multiplexing
+
+13 Server Push
+
+14 Binäre Kodierung von Inhalten
+
+15 Zusammenfassung
+
+TODO: Folien ausfüllen, Texte schreiben, Seitenzahlen hinzufügen, Üben, üben, üben
 
 
 	
