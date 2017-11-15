@@ -36,18 +36,17 @@ TRACE liefert die Anfrage so zurück wie der Server sie empfangen hat. So kann m
 Quelle: file:///home/mh/Dokumente/WebTec/WebTecVortrag/HTTPQuellen/Quellen%20lose/Hypertext%20Transfer%20Protocol%20Version%202%20(HTTP_2).html
 
 Head of line blocking -> viele TCP-Verbindung werden benutzt
-Ziel: Weniger TCP-Verbindungen benutzen.
+Ziel: Weniger TCP-Verbindungen benutzen. Die verfügbaren Netzwerkressourcen effizient ausnutzen.
 Header sind redundant und zu ausführlich -> unnötige Daten und füllen des TCP congestion windows
 
-Lösungen:
-1. HTTP/2 versucht die Semantik von HTTP-Anfragen optimal auf die TCP-Verbindung zu mappen. Das geht mit interleaving und streams.
-2.1 Effiziente Kodierung von Headern.
-2.2 Priorisierung von Requests
-3. Einführung einer neuen Einheit zum Aufbau von Messages: Frames.
- 
-
 10 HTTP/2
-2015 gab es eine neue Protokollversion, nämlich HTTP/2. Und wieder war ein Hauptaugenmerk der Entwickler die Performanczu steigern. 
+2015 gab es eine neue Protokollversion, nämlich HTTP/2. Und wieder war ein Hauptaugenmerk der Entwickler die Performanczu steigern.
+
+Lösungen:
+1. "HTTP/2 addresses these issues by defining an optimized mapping of HTTP's semantics to an underlying connection." Das geht mit interleaving und streams.
+2.1 "efficient coding for HTTP header fields"
+
+ 
 
 11 Datenkompression
 
