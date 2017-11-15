@@ -32,8 +32,19 @@ Mit PUT kann man neue Ressourcen auf dem Server erstellen. Der Unterschied zwisc
 Mit DELETE kann man Dateien auf dem Server löschen. Ob das wirklich passiert, entscheidet der Server. Beispiel: DELETE google.com/about
 TRACE liefert die Anfrage so zurück wie der Server sie empfangen hat. So kann man überprüfen, ob der Request auf dem Weg zum Server verändert wurde. Denn es können zwischen Client und Server Tunnel, Proxies und Gateways sitzen. Das war eine Auswahl von Methoden. Es gibt noch mehr.
 
-9 Flexibilität
-HTTP ist ein sehr flexibles Protokoll, weil man 
+9 Probleme mit HTTP/1.1
+Quelle: file:///home/mh/Dokumente/WebTec/WebTecVortrag/HTTPQuellen/Quellen%20lose/Hypertext%20Transfer%20Protocol%20Version%202%20(HTTP_2).html
+
+Head of line blocking -> viele TCP-Verbindung werden benutzt
+Ziel: Weniger TCP-Verbindungen benutzen.
+Header sind redundant und zu ausführlich -> unnötige Daten und füllen des TCP congestion windows
+
+Lösungen:
+1. HTTP/2 versucht die Semantik von HTTP-Anfragen optimal auf die TCP-Verbindung zu mappen. Das geht mit interleaving und streams.
+2.1 Effiziente Kodierung von Headern.
+2.2 Priorisierung von Requests
+3. Einführung einer neuen Einheit zum Aufbau von Messages: Frames.
+ 
 
 10 HTTP/2
 2015 gab es eine neue Protokollversion, nämlich HTTP/2. Und wieder war ein Hauptaugenmerk der Entwickler die Performanczu steigern. 
