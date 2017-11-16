@@ -42,16 +42,6 @@ Bevor ich Head of Line Blocking erkläre, will ich nochmal Pipelining genauer an
 Was mann Head of Line Blocking nennt, ist dass der Request, der als erster in der Pipeline ist, alle Requests dahinter blockiert. Da gibt es eine Analogie. Nämlich Warteschlangen z.B. im Supermarkt. Man möchte möglichst schnell drankommen und sucht sich die Schlange aus, von der man denkt, dass man am schnellsten ist. Das ist aber nur eine Schätzung. Bei TCP-Verbindungen kann man im Vergleich zu Supermarktschlangen selber entscheiden eine neue Schlange aufzumachen. Aber dabei ist die Skalierung durch die Anzahl der TCP-Verbindungen, die man öffnen kann begrenzt.  
 
 
-Head of line blocking -> viele TCP-Verbindung werden benutzt
-Ziel: Weniger TCP-Verbindungen benutzen. Die verfügbaren Netzwerkressourcen effizient ausnutzen.
-Header sind redundant und zu ausführlich -> unnötige Daten und füllen des TCP congestion windows
-
-10 HTTP/2
-2015 gab es eine neue Protokollversion, nämlich HTTP/2. Und wieder war ein Hauptaugenmerk der Entwickler die Performanczu steigern.
-
-Lösungen:
-1. "HTTP/2 addresses these issues by defining an optimized mapping of HTTP's semantics to an underlying connection." Das geht mit interleaving und streams.
-2.1 "efficient coding for HTTP header fields"
 
  
 
