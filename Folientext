@@ -33,7 +33,14 @@ Mit DELETE kann man Dateien auf dem Server löschen. Ob das wirklich passiert, e
 TRACE liefert die Anfrage so zurück wie der Server sie empfangen hat. So kann man überprüfen, ob der Request auf dem Weg zum Server verändert wurde. Denn es können zwischen Client und Server Tunnel, Proxies und Gateways sitzen. Das war eine Auswahl von Methoden. Es gibt noch mehr.
 
 9 Probleme mit HTTP/1.1
-Quelle: file:///home/mh/Dokumente/WebTec/WebTecVortrag/HTTPQuellen/Quellen%20lose/Hypertext%20Transfer%20Protocol%20Version%202%20(HTTP_2).html
+Wie wir gesehen hab gab es in HTTP/1.1 neue Möglichkeiten aber die Datenmenge die man übertragen möchte ist wieder größer geworden und man wollte die Latenz noch mehr verringern. Dafür möchte man die Netzwerk-Ressourcen, die man zur Verfügung hat optimal Nutzen. Netzwerk-Ressourcen heißt konkret die TCP-Verbindungen. Im besten Fall möchte man alle Request Nebenläufig verarbeiten lassen. Das geht aber nicht, weil die Anzahl der TCP-Verbindungen, die man aufbauen kann begrenzt ist. Ein Lösungsansatz, der die Latenz verbessert hat ist Pipelining. Aber Pipelining hat auch Grenzen. Und ein Problem, dass bei Pipelining auftritt ist Head of Line Blocking. Das führt dazu, dass viele TCP-Verbindungen aufgebaut werden, um die Latenz gering zu halten. Das will man bei HTTP/2 vermeiden. Konkretes Ziel für HTTP/2 ist weniger TCP Verbindungen für die selben Daten zu benutzen.
+
+10 Pipelining
+Bevor ich Head of Line Blocking erkläre, will ich nochmal Pipelining genauer anschauen. Was Pipelining möglich gemacht hat, ist dass bevor die Antwort auf einen Request da ist, man einen neuen Request losschicken kann. Was aber nichts daran ändert, dass ich auf die Antwort des ersten Request warten muss, bevor ich die Antwort auf den zweiten Request empfangen kann. Es gilt also First-In-First-Out.
+
+11 Head of Line Blocking
+Was mann Head of Line Blocking nennt, ist dass der Request, der als erster in der Pipeline ist, alle Requests dahinter blockiert. Da gibt es eine Analogie. Nämlich Warteschlangen z.B. im Supermarkt. Man möchte möglichst schnell drankommen und sucht sich die Schlange aus, von der man denkt, dass man am schnellsten ist. Das ist aber nur eine Schätzung. Bei TCP-Verbindungen kann man im Vergleich zu Supermarktschlangen selber entscheiden eine neue Schlange aufzumachen. Aber dabei ist die Skalierung durch die Anzahl der TCP-Verbindungen, die man öffnen kann begrenzt.  
+
 
 Head of line blocking -> viele TCP-Verbindung werden benutzt
 Ziel: Weniger TCP-Verbindungen benutzen. Die verfügbaren Netzwerkressourcen effizient ausnutzen.
