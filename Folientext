@@ -9,6 +9,7 @@ HTTP steht für Hypertext Transfer Protokoll. Es ist ein Protokoll für Rechnern
 
 4: Hier sind zwei Beispiele für Datenpakete. Das Protokoll an das sie sich halten, ist der erste Prototyp von HTTP. Man nennt den Prototyp HTTP/0.9 . Eine Anfrage, die ein Client an einen Server stellen könnte und die Antwort des Servers. Was man hier schön sehen kann: HTTP ist ein Textprotokoll. Das bedeutet wir haben hier keine Bits, sondern ASCII-Zeichen und es ist vom Menschen lesbar. Und es ist ein Request-Response-Protocol. Das bedeutet die Kommunikation geht in zwei Richtungen: Vom Client zum Server und zurück. Das ist nicht bei allen Protokollen so. Beim UDP-Protokoll (User Datagram Protocol) geht die Kommunikation nur in eine Richtung. In der Anfrage gibt es die Methode GET. Das ist auch die einzig mögliche Methode in HTTP/0.9. Get bedeutet, dass sich der Client eine Datei vom Server holen will. Als Argument hat die GET-Methode die Ressource, die der Client haben will. Das ist in diesem Fall eine HTML-Datei. Man kann hier direkt auf die Ordnerstruktur des Servers zugreifen, weil die IP und der Port schon durch die TCP-Verbindung auf der HTTP aufbaut bekannt ist. Z.B. eine telnet Verbindung, die TCP benutzt.
 Beispiele erfüllen die Spezifikationen eines Prototyps für das HTTP-Protokoll von 1991. Man kann das Protokoll immer noch benutzen. Beispiel zeigen.
+info.cern.ch/
 
 5: Grenzen von HTTP/0.9
 Um die grundlegenden Funktionalitäten zu testen war der Prototyp schon nicht schlecht, aber im Lauf der Zeit wollte man mehr machen und HTTP/0.9 ist an seine Grenzen gestoßen. Und das waren folgende.
@@ -32,34 +33,37 @@ Mit PUT kann man neue Ressourcen auf dem Server erstellen. Der Unterschied zwisc
 Mit DELETE kann man Dateien auf dem Server löschen. Ob das wirklich passiert, entscheidet der Server. Beispiel: DELETE google.com/about
 TRACE liefert die Anfrage so zurück wie der Server sie empfangen hat. So kann man überprüfen, ob der Request auf dem Weg zum Server verändert wurde. Denn es können zwischen Client und Server Tunnel, Proxies und Gateways sitzen. Das war eine Auswahl von Methoden. Es gibt noch mehr.
 
-9 Probleme mit HTTP/1.1
+9 Status Codes
+Jede Response enthält einen Status-Code. Status-Codes geben Informationen über die Bearbeitung der Anfrage.
+1xx Informational. Antworten mit Code 1xx sind Zwischenantworten die Informationen über die Bearbeitung einer Anfrage geben, bevor die tatsächliche Antwort geschickt wird. Beispiel: 100 Continue bedeutet, dass der Client den anfgefangenen Request vollständig schicken. Der Request wurde noch nicht abgelehnt. Das kann man für Anfragen mit sehr großem Body benutzen, damit der Server entscheiden kann, ob er so einen Request haben will.
+2xx Succesful. Der Server hat den Request empfangen, verstanden und akzeptiert.
+200 OK. Der Request war erfolgreich und der durch die Request-Methode spezifizierte Payload ist angehängt.
+3xx Redirection. Der Client muss noch etwas machen, damit seine Anfrage erfolgreich bearbeitet werden kann. Beispiel: 302 Found. Die angefragte Ressource ist temporär unter einer anderen URL erreichbar. Die temporäre URL wird im Location-Header mit zurückgeschickt.
+4xx Client Error Client hat etwas falsch gemacht.
+Beispiel: telnet google.de 80
+GET /abcde.html 
+404: Es gibt die angefragte Ressource auf dem Server nicht.
+5xx: Server Error Auf dem Server ist etwas schief gelaufen und der Request kann nicht bearbeitet werden.
+503: Service Unavailable. Im Moment werden keine Requests verarbeitet. Z.B. wegen Wartung.
+
+
+
+10 Probleme mit HTTP/1.1
 Wie wir gesehen hab gab es in HTTP/1.1 neue Möglichkeiten aber die Datenmenge die man übertragen möchte ist wieder größer geworden und man wollte die Latenz noch mehr verringern. Dafür möchte man die Netzwerk-Ressourcen, die man zur Verfügung hat optimal Nutzen. Netzwerk-Ressourcen heißt konkret die TCP-Verbindungen. Im besten Fall möchte man alle Request Nebenläufig verarbeiten lassen. Das geht aber nicht, weil die Anzahl der TCP-Verbindungen, die man aufbauen kann begrenzt ist. Ein Lösungsansatz, der die Latenz verbessert hat ist Pipelining. Aber Pipelining hat auch Grenzen. Und ein Problem, dass bei Pipelining auftritt ist Head of Line Blocking. Das führt dazu, dass viele TCP-Verbindungen aufgebaut werden, um die Latenz gering zu halten. Das will man bei HTTP/2 vermeiden. Konkretes Ziel für HTTP/2 ist weniger TCP Verbindungen für die selben Daten zu benutzen.
 
-10 Pipelining
+11 Pipelining
 Bevor ich Head of Line Blocking erkläre, will ich nochmal Pipelining genauer anschauen. Was Pipelining möglich gemacht hat, ist dass bevor die Antwort auf einen Request da ist, man einen neuen Request losschicken kann. Was aber nichts daran ändert, dass ich auf die Antwort des ersten Request warten muss, bevor ich die Antwort auf den zweiten Request empfangen kann. Es gilt also First-In-First-Out.
 
-11 Head of Line Blocking
+12 Head of Line Blocking
 Was mann Head of Line Blocking nennt, ist dass der Request, der als erster in der Pipeline ist, alle Requests dahinter blockiert. Da gibt es eine Analogie. Nämlich Warteschlangen z.B. im Supermarkt. Man möchte möglichst schnell drankommen und sucht sich die Schlange aus, von der man denkt, dass man am schnellsten ist. Das ist aber nur eine Schätzung. Bei TCP-Verbindungen kann man im Vergleich zu Supermarktschlangen selber entscheiden eine neue Schlange aufzumachen. Aber dabei ist die Skalierung durch die Anzahl der TCP-Verbindungen, die man öffnen kann begrenzt.  
 
-
-
- 
-
-11 Datenkompression
-
 12 Multiplexing
-
-13 Server Push
 
 14 Binäre Kodierung von Inhalten
 
 15 Zusammenfassung
 
-TODO: Probleme bei HTTP/1.1 beschreiben: https://http2.github.io/http2-spec/ Introductiond
-
-
-Folien ausfüllen, Texte schreiben, Seitenzahlen hinzufügen, Üben, üben, üben
-
+TODO: Quelle für Head of Line Blocking finden
 
 	
 
