@@ -57,13 +57,19 @@ Bevor ich Head of Line Blocking erkläre, will ich nochmal Pipelining genauer an
 12 Head of Line Blocking
 Was mann Head of Line Blocking nennt, ist dass der Request, der als erster in der Pipeline ist, alle Requests dahinter blockiert. Da gibt es eine Analogie. Nämlich Warteschlangen z.B. im Supermarkt. Man möchte möglichst schnell drankommen und sucht sich die Schlange aus, von der man denkt, dass man am schnellsten ist. Das ist aber nur eine Schätzung. Bei TCP-Verbindungen kann man im Vergleich zu Supermarktschlangen selber entscheiden eine neue Schlange aufzumachen. Aber dabei ist die Skalierung durch die Anzahl der TCP-Verbindungen, die man öffnen kann begrenzt.  
 
-12 Multiplexing
+13 viele sehr ähnliche Requests
+Dadurch, dass die Anzahl der Objekte, die auf einer Internetseite angezeigt werden immer größer geworden ist, müssen für das Laden einer Seite immer mehr Requests gesendet werden. Wenn man z.B. viele Bilder holt, sind die Requests immer sehr ähnlich. Es ändert sich z.B. immer nur die URL des Objekts, dass man holen möchte. Cookies werden auch jedes mal mit geschickt und können sehr groß sein. (Erklären was Cookies sind?). Also gibt es sehr viele ähnliche Anfragen. Das ist eine gute Möglichkeit Kompression einzusetzen. 
 
-14 Binäre Kodierung von Inhalten
+14 HTTP/2
+HTTP/2 gibt Möglichkeiten weniger TCP-Verbindungen zu benutzen und die Größe der gesendeten Datenmenge in Requests zu verringern. Das geht mit Multiplexing und Header Compression. Außerdem ist HTTP/2 kein Textprotokoll mehr, sondern ein Binäres Protokoll. Und was auch einfgeführt wurde, ist dass Messages in Frames strukturiert sind.
+
+14 Multiplexing
+Erst bild Zeigen
+
 
 15 Zusammenfassung
 
-TODO: Quelle für Head of Line Blocking finden
+TODO: Quelle für Head of Line Blocking finden, Google Wasserfall Graph mit Yahoo.de zeigen, Bild für Multiplexing einfügen
 
 	
 
