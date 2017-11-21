@@ -24,7 +24,7 @@ Nach ein paar Jahren gab es dann die erste standardisierte Version von HTTP. Die
 
 8. Metainformationen: Header
 Es gibt 4 Arten von Headern. Wie gesagt sind Header Metadaten. Der Unterschied zwischen den Klassen ist worüber der Header Informationen gibt und wo man ihn verwenden kann. Allgemeine Header können in Anfragen und Antworten benutzt werden. Sie beziehen sich nur auf die Nachricht. Ein Beispiel dafür ist der Date Header, der angibt an welchem Datum und zu welcher Zeit eine Nachricht losgeschickt wurde.
-Anfrage Headerfelder liefern Informationen über den Client und die Anfrage. So ein Headerfeld ist das Accept-Headerfeld. Das Accept-Headerfeld gibt an in welchem Dateiformat die angefragte Ressource vom Client akzeptiert wird. Z.B. kann der Client sagen, dass er gerne eine JSON-Datei haben möchte.
+Anfrage Headerfelder liefern Informationen über den Client und die Anfrage. So ein Headerfeld ist das Expect Headerfeld. Das Except-Headerfeld gibt an, dass der Client ein bestimmtes Verhalten vom Server erwartet. Z.B. kann der Client mit dem Expect-100 Headerfeld sagen, dass er möchte, dass der Server erst nur die Header empfängt und eine Response mit einem 100 Header zurückschickt, bevor er den Body empfangen will.
 Antwort Header liefern Informationen über den Server und darüber wie man auf die angefragte Ressource zugreifen kann. So wie in der Beispielanfrage an Google. Dort ist der Location-Headerfeld ein Antwort Headerfeld. Das Location-Headerfeld gibt an wo sich eine angefragte Ressource befindet. Das ist nötig, wenn man mit einem Request eine Ressource erstellt oder wenn sich die angefragte Ressource an einem anderen Ort ist.
 Entity Headerfelder beziehen sich auf den Payload/Entity/Message-Body.
 Ein Beispiel für ein Entity Headerfeld ist Content-type. Content-type gibt an welches Dateiformat die Datei, die der Server schickt hat. Der Wert von Content-type kann z.B. Aussagen, dass die geschickte Datei eine HTMl-Datei ist und ihr Zeichensatz UTF-8 ist.
@@ -39,7 +39,7 @@ TRACE liefert die Anfrage so zurück wie der Server sie empfangen hat. So kann m
 10. Status Codes
 Jede Response enthält einen Status-Code. Status-Codes geben Informationen über die Bearbeitung der Anfrage.
 1xx Informational. Antworten mit Code 1xx sind Zwischenantworten die Informationen über die Bearbeitung einer Anfrage geben, bevor die tatsächliche Antwort geschickt wird. Beispiel: 100 Continue bedeutet, dass der Client den anfgefangenen Request vollständig schicken. Der Request wurde noch nicht abgelehnt. Das kann man für Anfragen mit sehr großem Body benutzen, damit der Server entscheiden kann, ob er so einen Request haben will.
-2xx Succesful. Der Server hat den Request empfangen, verstanden und akzeptiert.
+2xx Successful. Der Server hat den Request empfangen, verstanden und akzeptiert.
 200 OK. Der Request war erfolgreich und der durch die Request-Methode spezifizierte Payload ist angehängt.
 3xx Redirection. Der Client muss noch etwas machen, damit seine Anfrage erfolgreich bearbeitet werden kann. Beispiel: 302 Found. Die angefragte Ressource ist temporär unter einer anderen URL erreichbar. Die temporäre URL wird im Location-Header mit zurückgeschickt.
 4xx Client Error Client hat etwas falsch gemacht.
