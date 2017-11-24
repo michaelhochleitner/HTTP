@@ -1,29 +1,18 @@
 Darf ich https://hpbn.co/brief-history-of-http/ als Quelle benutzen?
-
 Anzahl von Headern und Methoden
-
 Reicht es wenn ich vier Beispiele für Header und sechs Beispiele für Methoden vorstelle. Also nicht vollständig.
-
-
 HTTP/1.1: Request-Response, Textbasiert, Methoden, Header, Status-Codes
-
 Am Anfang sagen, dass der Browser dasselbe macht wie telnet.
-
 Kategorien von Status Codes
 1,2,3,4,5 Ein Beispiel aus einer Gruppe
-
 Beispiel für Seite, die viele Requests abschickt: google.de
 Zu den tatsächlichen Quellen kommen Bei Folie 4,5,6,7,8,9
-
 größerer Teil: HTTP1.1: 2/3
 HTTP2 1/3
-
 HTTP/2 Konzepte, Frames, Streaming, Multiplexing
-
 Für Multiplexing eine Buchquelle angeben.
-
 durchgehendes Beispiel 
-
 Kontext: Veränderung des Internets
+Google Developer Console: Chromium, F12,
 
-Google Developer Console: Chromium, F12,  
+Status Code 100:

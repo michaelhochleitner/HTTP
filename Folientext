@@ -38,7 +38,7 @@ TRACE liefert die Anfrage so zurück wie der Server sie empfangen hat. So kann m
 
 10. Status Codes
 Jede Response enthält einen Status-Code. Status-Codes geben Informationen über die Bearbeitung der Anfrage.
-1xx Informational. Antworten mit Code 1xx sind Zwischenantworten die Informationen über die Bearbeitung einer Anfrage geben, bevor die tatsächliche Antwort geschickt wird. Beispiel: 100 Continue bedeutet, dass der Client den anfgefangenen Request vollständig schicken. Der Request wurde noch nicht abgelehnt. Das kann man für Anfragen mit sehr großem Body benutzen, damit der Server entscheiden kann, ob er so einen Request haben will.
+1xx Informational. Antworten mit Code 1xx sind Zwischenantworten die Informationen über die Bearbeitung einer Anfrage geben, bevor die tatsächliche Antwort geschickt wird. Beispiel: 100 Continue bedeutet, dass der Client den anfgefangenen Request vollständig schicken soll. Der Request wurde noch nicht abgelehnt. Das kann man für Anfragen mit sehr großem Body benutzen, damit der Server entscheiden kann, ob er so einen Request haben will.
 2xx Successful. Der Server hat den Request empfangen, verstanden und akzeptiert.
 200 OK. Der Request war erfolgreich und der durch die Request-Methode spezifizierte Payload ist angehängt.
 3xx Redirection. Der Client muss noch etwas machen, damit seine Anfrage erfolgreich bearbeitet werden kann. Beispiel: 302 Found. Die angefragte Ressource ist temporär unter einer anderen URL erreichbar. Die temporäre URL wird im Location-Header mit zurückgeschickt.
