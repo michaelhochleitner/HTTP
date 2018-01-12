@@ -1,0 +1,4 @@
+Größter Kritikpunkt: Mehr aus mir herauskommen.
+Begriffe benutzen, die ich nicht eingeführt habe: Client für Browser.
+Das selbe Konzept an zwei Stellen erklären ist nicht gut. Man kann auch sagen: Das erkläre ich später.
+Multiplexing kann man auch ohne Frames erklären. 
