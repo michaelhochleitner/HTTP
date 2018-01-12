@@ -1,0 +1,1 @@
+Der Informatiker Tim Berners-Lee arbeitete in den 90er Jahren am CERN-Institut in Genf. Dort gab es viele Leute, die verschiedene Computer benutzten, die nicht alle miteinander kompatibel waren. Außerdem gab es ein Bedürfnis nach Informationsaustausch. Deshalb entwickelte er ein Dokumentationssystem. 
