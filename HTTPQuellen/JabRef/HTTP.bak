@@ -196,4 +196,11 @@ Fielding, et al Standards Track [Page 1]
   timestamp = {2018.01.03},
 }
 
+@Electronic{Berners-Lee,
+  author    = {Tim Berners-Lee},
+  title     = {https://www.w3.org/Protocols/HTTP/AsImplemented.html},
+  owner     = {mh},
+  timestamp = {2018.01.07},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

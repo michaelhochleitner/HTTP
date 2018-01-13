@@ -60,7 +60,7 @@ Belshe, et al.               Standards Track                    [Page 1]
 
 @TechReport{Fielding1999,
   author      = {Fielding, R., Gettys, J., Mogul, J., Frystyk, H., Masinter, L., Leach, P., and T. Berners-Lee},
-  title       = {RFC 1945 Hypertext Transfer Protocol -- HTTP/1.1},
+  title       = {rfc 2616 Hypertext Transfer Protocol -- HTTP/1.1},
   institution = {RFC Editor},
   year        = {1999},
   abstract    = {The Hypertext Transfer Protocol (HTTP) is an application-level protocol for distributed, collaborative, hypermedia
@@ -112,7 +112,7 @@ Fielding, et al Standards Track [Page 1]
 
 @TechReport{Berners-Lee1996,
   author = {Berners-Lee, T., Fielding, R., and H. Frystyk},
-  title  = {Hypertext Transfer Protocol -- HTTP/1.0},
+  title  = {RFC 1945 Hypertext Transfer Protocol -- HTTP/1.0},
   year   = {1996},
   file   = {:rfc1945.txt.pdf:PDF},
 }
@@ -196,9 +196,10 @@ Fielding, et al Standards Track [Page 1]
   timestamp = {2018.01.03},
 }
 
-@Electronic{Berners-Lee,
+@Book{Berners-Lee,
   author    = {Tim Berners-Lee},
-  title     = {https://www.w3.org/Protocols/HTTP/AsImplemented.html},
+  title     = {The Original HTTP as defined in 1991},
+  year		= {1991},
   owner     = {mh},
   timestamp = {2018.01.07},
 }
