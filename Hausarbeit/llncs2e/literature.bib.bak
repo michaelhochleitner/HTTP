@@ -112,7 +112,7 @@ Fielding, et al Standards Track [Page 1]
 
 @TechReport{Berners-Lee1996,
   author = {Berners-Lee, T., Fielding, R., and H. Frystyk},
-  title  = {RFC 1945 Hypertext Transfer Protocol -- HTTP/1.0},
+  title  = {rfc 1945 Hypertext Transfer Protocol -- HTTP/1.0},
   year   = {1996},
   file   = {:rfc1945.txt.pdf:PDF},
 }
