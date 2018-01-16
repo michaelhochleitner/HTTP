@@ -23,7 +23,7 @@ Wintersemester 2017/18
 \end{center}
 
 \begin{abstract}
-HTTP ist ein Netzwerkprotokoll, das benutzt wird um Datenpakete zwischen Rechnern in Rechnernetzen auszutauschen. Die erste Version von HTTP wurde 1990 entwickelt. Seitdem wurde das Protokoll in mehreren Protokollversionen erweitert. Die Schwerpunkte bei den Erweiterungen des Protokolls sind Flexibilität und Performanz. Flexibilität bedeutet hier, dass das Protokoll erweitert werden kann. Es können neue Anfragemethoden, Errorcodes und Header hinzugefügt werden. HTTP baut auf einem Transportprotokoll auf. Verbesserungen in der Performanz erreicht man durch effiziente Nutzung des Transportprotokolls. Das wird in HTTP/2 durch Multiplexing umgesetzt. Die prominenteste Anwendung, die HTTP nutzt, ist das World Wide Web.
+HTTP ist ein Netzwerkprotokoll, das benutzt wird um Datenpakete zwischen Rechnern in Rechnernetzen auszutauschen. Die erste Version von HTTP wurde 1990 entwickelt. Seitdem wurde das Protokoll in mehreren Protokollversionen erweitert. Die Schwerpunkte bei den Erweiterungen des Protokolls sind Flexibilität und Performanz. Flexibilität bedeutet, dass das Protokoll erweitert werden kann. Es können neue Anfragemethoden, Errorcodes und Header hinzugefügt werden. HTTP baut auf einem Transportprotokoll auf. Verbesserungen in der Performanz erreicht man durch effiziente Nutzung des Transportprotokolls. Das wird in HTTP/2 durch Multiplexing umgesetzt. Die prominenteste Anwendung, die HTTP nutzt, ist das World Wide Web.
 \keywords{Protokoll, Rechnernetze, Internet, World Wide Web, Hypertext, HTTP, HTTP/2}
 \end{abstract}
 
@@ -66,10 +66,12 @@ Der hier gezeigte Header ist dafür da, um den Datentyp eines Paketinhalts anzuz
 \begin{verbatim}
 Connection: close
 \end{verbatim}
-Wenn dieses Headerfeld in einer Anfrage mitgeschickt wird, sagt es aus, dass die Verbindung nach Bearbeitung der Anfrage geschlossen werden kann. 
+Wenn dieses Headerfeld in einer Anfrage mitgeschickt wird, sagt es aus, dass die Verbindung nach Bearbeitung der Anfrage geschlossen werden kann. \linebreak
+Der wichtigste Anfrage Header ist Host. \begin{quote} The Host request-header field (section 14.23) MUST accompany all
+   HTTP/1.1 requests. \cite{Fielding1999} \end{quote} Er ist dafür da, dass blablabla.
 \section{Flexibilität und Erweiterbarkeit}
-Zuerst war das World Wide Web nur zum Austausch von schriftlichen Dokumenten gedacht. Im Laufe der Zeit enstand der Wunsch auch Dateien anderer Formate im World Wide Web zu veröffentlichen. Zum Beispiel Bilder. Das HTTP-Protokoll in der Version 0.9 unterstützt das nicht. Ab der Version 1.0 ist es möglich andere Dateiformate außer HTML zu verschicken. Das spiegelt sich auch in der Beschreibung des Protokolls wieder. So wird HTTP im RFC 1945 als "protocol for distributed, collaborative, hypermedia information systems bezeichnet." Der Unterschied zwischen Hypermedia und Hypertext ist, dass Hypermedia neben Text auch Bilder und Videos enthält.
-Bei der Entwicklung der Protokollversion 1.0 wurde darauf geachtet, dass das Protokoll flexibel ist. Flexibilität wird durch die Möglichkeit neue Methoden und Header hinzuzufügen erreicht. 
+HTTP hat sich als Protokoll für das World Wide Web durchgesetzt [hier kann man Konkurrenten nennen], weil es darauf ausgelegt ist, erweitert zu werden. Damit war es von Anfang flexibel für neue Bedürfnisse der Implementierer. Im RFC 1945 steht, dass man neue Methoden, Headerfelder und Statuscodes 
+[Hier Beispiele für extension methods und extension headers angeben].
 \section{Performanz}
 In HTTP/2 gibt es Multiplexing.\cite{Belshe2015}
 \section{Cookies}
