@@ -87,20 +87,34 @@ Die Klasse 5xx heißt Server Error. Sie sagt aus, dass der Server eine in einer 
 Diese Beschreibung sind Übersetzungen aus \cite{Fielding1999}. \newline
 Der Statuscode 302 aus der Klasse Redirection sagt aus, dass die angefragte Ressource temporär unter einem anderen URI erreichbar ist. Diese temporäre URI wird dem Client in der Antwort im Location-Headerfeld mitgeteilt. Der Client muss die neue URI anfragen, damit sein ursprünglicher Request vollständig bearbeitet wird. Das ist die weitere Aktion, die charakteristisch für Statuscodes der Klasse 3xx ist. 
    
-\section{Flexibilität und Erweiterbarkeit}
-HTTP hat sich als Protokoll für das World Wide Web durchgesetzt [hier kann man Konkurrenten nennen], weil es darauf ausgelegt ist, erweitert zu werden. Damit war es von Anfang flexibel für neue Bedürfnisse der Implementierer. Im RFC 1945 steht, dass man neue Methoden, Headerfelder und Statuscodes 
-[Hier Beispiele für extension methods und extension headers angeben].
 \section{Performanz und HTTP/2}
-Zur Zeit der Protokollversion 0.9 bestanden Internetseiten nur aus Text, der als einzelne HTML-Datei versendet werden konnte. Im Laufe der Zeit stieg die Anzahl der Requests, die ein Browser sendet, um eine Seite im World Wide Web anzuzeigen. Man verschickt ca. 200 Anfragen wenn man die Seite\linebreak https://de.yahoo.com/ aufruft. Siehe Abbildung 1. Mit der Anzahl der Anfragen steigt auch die Anzahl der Dateien, die in Antworten zurückgesendet werden. Dementsprechend wurde HTTP im Laufe der Zeit angepasst, um dem WWW-Benutzer möglichst schnell seine Internetseite anzuzeigen. HTTP-Pakete werden über eine TCP-Verbindung verschickt. Eine effiziente Nutzung der TCP-Verbindung ermöglicht es viele Datenpakete in kurzer Zeit zu übertragen.\newline
-In der Protokollversion 0.9 gab es pro Anfrage-Antwort-Paar nur eine TCP-Verbindung. Die Verbindung wird für eine Anfrage geöffnet und nach der Über-tragung der Antwort geschlossen.  
+Zur Zeit der Protokollversion 0.9 bestanden Internetseiten nur aus Text, der als einzelne HTML-Datei versendet werden konnte. Im Laufe der Zeit stieg die Anzahl der Requests, die ein Browser sendet, um eine Seite im World Wide Web anzuzeigen.Man verschickt ca. 200 Anfragen wenn man die Seite\linebreak https://de.yahoo.com/ aufruft. Siehe Abbildung 1.\newline Mit der Anzahl der Anfragen steigt auch die Anzahl der Dateien, die in Antworten zurückgesendet werden. Dementsprechend wurde HTTP im Laufe der Zeit angepasst. Den Benutzern des des World Wide Web sollen Internetseiten möglichst schnell angezeigt werden.
+HTTP-Pakete werden über eine TCP-Verbindung verschickt. Eine effiziente Nutzung der TCP-Verbindung ermöglicht es viele Datenpakete in kurzer Zeit zu übertragen und eine Internetseite schnell aufzubauen.\newline
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{yahooRequests}
 \caption{Aufrufen von https://de.yahoo.com am 19.02.2018 im Browser Chromium. Links unten sieht man die Anzahl der Anfragen.}
 \end{figure}
+In der Protokollversion 0.9 gab es pro Anfrage-Antwort-Paar nur eine TCP-Verbindung. Die Verbindung wird für eine Anfrage geöffnet und nach der Über-tragung der Antwort geschlossen. Das Öffnen und Schließen einer TCP-Verbindung erzeugt einen Overhead. Um ihn zu entfernen wurden in HTTP/1.1 persistente Verbindungen eingeführt. Auf einer persistenten Verbindung kann man eine zweite Anfrage versenden ohne die Antwort auf die erste Anfrage abzuwarten. Das nennt der RFC 2616 Pipelining. Pipelining ist in Abbildung 2 dargestellt.
 
-  
+Wenn mehrere Anfragen in einer Pipeline auf einer TCP-Verbindung stehen, werden die Anfragen nacheinander abgearbeitet. Eine Anfrage deren Bearbeitung lange dauert kann die Bearbeitung der Anfragen dahinter verzögern. Dieses Phänomen heißt Head-of-line-Blocking oder HOL-Blocking. Wenn auf einer TCP-Verbindung HOL-Blocking auftritt kann eine neue Verbindung zum Server geöffnet werden, um neue Requests zu verschicken. Auf der neuen Verbindung kann wieder HOL-Blocking auftreten. Da die Anzahl der TCP-Verbindungen zwischen Client und Server begrenzt ist, können alle Verbindungen durch HOL-Blocking blockiert werden. HOL-Blocking ist ein Hindernis, dass die Ladezeit einer Website erheblich beeinträchtigt.
+
+Um diesem Problem zu begegnen, wurde in HTTP/2 Multiplexing eingeführt.
+\begin{figure}
+\includegraphics[width=\columnwidth]{1200px-HTTP_pipelining2}
+\caption{Pipelining erlaubt es eine Anfrage zu senden ohne auf die Antwort der vorhergehenden Anfrage zu warten.}
+\end{figure}
+
+
 In HTTP/2 gibt es Multiplexing.\cite{Belshe2015}
+
+\section{Zusammenfassung}
+HTTP ist ein Request-Response-Protokoll, das zum Datenaustausch zwischen Computern über ein Rechnernetz genutzt wird. Es wurde ursprünglich für ein Dokumentationssystem entwickelt, das den Austausch digitaler Dokument zwischen Rechnern mit verschiedenen Betriebssystemen ermöglichen sollte. Dieses Dokumentationssystem hat sich zum World Wide Web entwickelt. 
+HTTP kommt zum Einsatz wenn ein Browser eine Internetseite von einem Server anfragt.\newline Ein HTTP-Paket enthält eine Methode, Metadaten und einen Payload. Die Methode drückt die Handlung aus, die der Client vom Server erwartet. Metadaten in HTTP-Paketen sind Header und Statuscodes. Der Payload ist eine Datei, die der Client zum Server übertragen will oder vom Server anfragt. \newline
+HTTP baut auf dem Transportprotokoll TCP auf.
+Die Verwendung von TCP-Verbindungen hat großen Einfluss darauf wie schnell eine Internetseite angezeigt werden kann. Die Verwendung der TCP-Verbindungen hat sich vom Öffnen und Schließen einer Verbindung für jede HTTP-Anfrage über persistente Verbindungen mit Pipelining zum Multiplexing entwickelt. \newline
+HOL-Blocking auf Ebene von HTTP-Paketen wurde in HTTP/2 mit Multiplexing gelöst.
+ Auf der Ebene von TCP-Paketen gibt es auch HOL-Blocking. Dafür entwickelt Google ein alternatives Protokoll unter dem Namen QUIC. 
 \bibliographystyle{acm}
 \bibliography{literature}
 
