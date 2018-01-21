@@ -2,7 +2,7 @@
 
 @TechReport{Belshe2015,
   author      = {M. Belshe, R. Peon, M. Thomson},
-  title       = {rfc 7540 Hypertext Transfer Protocol Version 2 (HTTP/2)},
+  title       = {Hypertext Transfer Protocol Version 2 (HTTP/2) 7540},
   institution = {RFC Editor},
   year        = {2015},
   file        = {:rfc7540.txt.pdf:PDF},
@@ -60,7 +60,7 @@ Belshe, et al.               Standards Track                    [Page 1]
 
 @TechReport{Fielding1999,
   author      = {R. Fielding, J. Gettys, J. Mogul, H. Frystyk, L. Masinter, P. Leach, T. Berners-Lee},
-  title       = {rfc 2616 Hypertext Transfer Protocol -- HTTP/1.1},
+  title       = {Hypertext Transfer Protocol -- HTTP/1.1 RFC 2616},
   institution = {RFC Editor},
   year        = {1999},
   abstract    = {The Hypertext Transfer Protocol (HTTP) is an application-level protocol for distributed, collaborative, hypermedia
@@ -112,7 +112,7 @@ Fielding, et al Standards Track [Page 1]
 
 @TechReport{Berners-Lee1996,
   author      = {T. Berners-Lee, R. Fielding, H. Frystyk},
-  title       = {rfc 1945 Hypertext Transfer Protocol -- HTTP/1.0},
+  title       = {Hypertext Transfer Protocol -- HTTP/1.0 RFC 1945},
   institution = {RFC Editor},
   year        = {1996},
   file        = {:rfc1945.txt.pdf:PDF},
