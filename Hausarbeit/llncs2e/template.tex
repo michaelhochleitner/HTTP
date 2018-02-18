@@ -31,8 +31,9 @@ Ein Schwerpunkt bei den Erweiterungen des Protokolls ist Performanz. Verbesserun
 \end{abstract}
 
 \section{Einleitung}
-In der Forschungseinrichtung CERN in Genf arbeiteten in den 90er Jahren viele Leute, die verschiedene Betriebssysteme und verschiedene Textverarbeitungsprogramme benutzten, um ihre Ergebnisse zu dokumentieren. Der Austausch von digitalen Dokumenten war schwierig. Deshalb entwickelte der Informatiker Tim Berners-Lee ein Dokumentationssystem. \begin{quote}What I was looking for fell under the general category of documentation systems-software that allows documents to be stored and later retrieved. \cite{Berners-Lee1999} \end{quote}
-Das Dokumentationssystem kombinierte die Technologien Internet, Hypertext und das Aufrufen von Prozeduren auf anderen Computern, genannt RPC (Remote Procedure Call). Es wurde bekannt unter dem Namen World Wide Web.\newline Die Architektur des World Wide Web ist Client-Server. Der Client sollte ein Programm sein, mit dem man Hypertextseiten erstellen, durchblättern und editieren kann.\cite{Berners-Lee1999} Der Server sollte ein Programm sein, das die Hypertextseiten hält und den Benutzern des World Wide Web Zugriff darauf erlaubt.\cite{Berners-Lee1999}
+In der Forschungseinrichtung CERN in Genf arbeiteten in den 90er Jahren viele Leute, die verschiedene Betriebssysteme und verschiedene Textverarbeitungsprogramme benutzten, um ihre Ergebnisse zu dokumentieren. Der Austausch von digitalen Dokumenten war schwierig. Deshalb entwickelte der Informatiker Tim Berners-Lee ein Dokumentationssystem. \cite{Berners-Lee1999}
+
+Das Dokumentationsystem baut auf den Technologien Internet, Hypertext und dem Aufrufen von Prozeduren auf anderen Computern, genannt RPC (Remote Procedure Call) auf. Es wurde bekannt unter dem Namen World Wide Web. Die Architektur des World Wide Web ist Client-Server. Der Client sollte ein Programm sein, mit dem man Hypertextseiten erstellen, durchblättern und editieren kann. Der Server sollte ein Programm sein, das die Hypertextseiten hält und den Benutzern des World Wide Web Zugriff darauf erlaubt.\cite{Berners-Lee1999}
 
 
 Durch das gemeinsame Dateiformat HTML (Hypertext Markup Language), die Verbindung von Computern über das Internet und das Abspeichern der HTML-Dateien auf einem Server wurde der Zugriff auf digitale Dokumente von Computern mit unterschiedlichen Betriebssystemen möglich.
@@ -43,34 +44,40 @@ Um Dateien auf einem Server für andere Computer zur Verfügung zu stellen, vers
 HTTP wurde entwickelt, um das Internet und HTML kompatibel zu machen. HTTP gibt es in vier Versionen. Die Versionsnummern sind 0.9, 1.0 1.1 und 2. Definiert wird HTTP in Requests for Comments, die von der Internet Engineering Task Force (IETF) und der Internet Society (ISOC) herausgegeben werden.
 
 Die Versionsnummer 0.9 ist die Versionsnummer des ersten Prototypen von HTTP. 1.0 ist die erste Versionsnummer, die in einem RFC veröffentlich wurde. Der RFC 1945 beschreibt HTTP 1.0, der RFC 2616 beschreibt HTTP 1.1 und der RFC 7540 beschreibt HTTP 2.0.
-Der RFC 2616 ist die erste standardisierte Spezifikation von HTTP. \begin{quote}This document specifies internet standards track protocol for the internet community. \cite{Fielding1999} \end{quote}
+Der RFC 2616 ist die erste standardisierte Spezifikation von HTTP. \cite{Fielding1999}
 \subsection{HTTP als Request-Response-Protokoll}
 Mit HTTP/0.9 kann man Datenpakete über eine TCP Verbindung verschicken. Das Protokoll definiert welche Form die Datenpakete haben müssen, damit Client und Server kommunizieren können. Das Protokoll unterscheidet zwei Arten von Datenpaketen: Anfragen und Antworten. Anfragen werden vom Client an den Server geschickt. Antworten enthalten bei einer erfolgreichen Anfrage die angefragte Datei. Um eine HTML Datei zu empfangen, muss ein Client über eine TCP-Verbindung eine Anfrage schicken. In der Anfrage wird die Datei, die übertragen werden soll spezifiziert. Es folgt ein Beispiel für eine Anfrage.
 \begin{verbatim}
 GET /index.html
 \end{verbatim}
-Die Methode in dieser Anfrage ist GET. Sie bedeutet, dass eine Datei vom Server zum Client übertragen werden soll. Der Server, die IP-Adresse und der Port müssen in HTTP-Anfragen nicht spezifiziert werden. Das ist Aufgabe der unterliegenden Protokolle IP und TCP. Die GET-Methode bekommt als Parameter einen URI. Der URI ist die Adresse der Datei. Die Datei nennt man auch Ressource.\newline
-Wenn eine Anfrage bei einem Server ankommt, muss er entscheiden, ob er die angeforderte HTML-Datei verschicken kann. Wenn er das kann ist die Antwort in der Protokollversion 0.9 die angefragte HTML-Datei. Der RFC 2616 bezeichnet das als ``raw data transfer''.\newline Aufgrund des Anfrage-Antwort-Mechanismus, den HTTP nutzt, wird es der Gruppe der Request-Response-Protokolle zugeordnet. Die Codierung für die Protokollversionen 0.9, 1.0 und 1.1 ist ASCII. Das ist so, weil bei der Entwicklung von HTTP 0.9 möglichst wenig über die Computer, die über das Protokoll kommunizieren sollten, angenommen wurde: \begin{quote} The least common denominator we could assume among all different types of computers was that they all head some sort of keyboard input device, and they all could produce ASCII (plain text) characters. \cite{Berners-Lee1999} \end{quote} Die HTTP Version 0.9 eignet sich gut um den Request-Response-Charakter von HTTP anschaulich darzustellen, weil die Anfragen und Antworten sehr kompakt sein können. Es folgt ein Beispiel für eine Antwort, die mit HTTP 0.9 konform ist.
+Die Methode in dieser Anfrage ist GET. Sie bedeutet, dass eine Datei vom Server zum Client übertragen werden soll. Der Server, die IP-Adresse und der Port müssen in HTTP-Anfragen nicht spezifiziert werden. Das ist Aufgabe der unterliegenden Protokolle IP und TCP. Die GET-Methode bekommt als Parameter einen URI. Der URI ist die Adresse der Datei. Die Datei nennt man auch Ressource.
+
+Wenn eine Anfrage bei einem Server ankommt, muss er entscheiden, ob er die angeforderte HTML-Datei verschicken kann. Wenn er das kann ist die Antwort in der Protokollversion 0.9 die angefragte HTML-Datei. Der RFC 2616 bezeichnet das als ``raw data transfer''.
+
+Aufgrund des Anfrage-Antwort-Mechanismus, den HTTP nutzt, wird es der Gruppe der Request-Response-Protokolle zugeordnet. Die Codierung für die Protokollversionen 0.9, 1.0 und 1.1 ist ASCII. Das ist so, weil die Mindestanforderungen an einen Computer, der über HTTP kommunizieren sollte, möglichst gering sein sollten. Es wurde nur vorrausgesetzt, dass der Computer eine Tastatureingabe hatte und ASCII-Zeichen produzieren konnte. \cite{Berners-Lee1999}
+
+Die HTTP Version 0.9 eignet sich gut um den Request-Response-Charakter von HTTP anschaulich darzustellen, weil die Anfragen und Antworten sehr kompakt sein können. Es folgt ein Beispiel für eine Antwort, die mit HTTP 0.9 konform ist.
 \begin{verbatim}
 <html>
 <p>Das ist eine HTML-Datei.<\p>
 </html>
 \end{verbatim}
 \section{Methoden}
-Der wichtigste Bestandteil eines HTTP-Pakets ist die Methode. Ein Datenaustausch zwischen Client und Server geht normalerweise vom Client aus. Der schickt ein Paket, das eine Methode enthält. Sie sagt dem Server was der Client will. Weiter oben wurde die GET-Methode beschrieben. Die beiden wichtigsten Methoden sind GET und HEAD. \begin{quote} The methods GET and HEAD MUST be supported by all general-purpose servers.\cite{Fielding1999} \end{quote}
-Außerdem gibt es OPTIONS, POST, PUT, DELETE, TRACE und CONNECT. 
+Der wichtigste Bestandteil eines HTTP-Pakets ist die Methode. Ein Datenaustausch zwischen Client und Server geht normalerweise vom Client aus. Der schickt ein Paket, das eine Methode enthält. Sie sagt dem Server was der Client will. Weiter oben wurde die GET-Methode beschrieben. Die beiden wichtigsten Methoden sind GET und HEAD. Sie müssen von allen HTTP-Servern unterstützt werden. \cite{Fielding1999} Außerdem gibt es OPTIONS, POST, PUT, DELETE, TRACE und CONNECT. 
 
 Mit der HEAD Methode kann Metadaten über eine Ressource abfragen, ohne sie zu übertragen. Die Antwort auf eine Anfrage mit der Methode HEAD enthält Headerfelder ohne den zugehörigen Paketinhalt.  PUT bedeutet, dass der Paketinhalt unter der angegebenen URI auf dem Server gespeichert werden soll. POST gibt eine übergeordnete URI an, unter der der Paketinhalt der Anfrage gespeichert werden soll. So wie man auf einem Dateisystem eine Datei in einem Ordner speichert. Die neue URI des Paketinhalts, der auf dem Server gespeichert wurde, wird in einer Antwort vom Server zurückgeschickt. Das ist eine Anwendungsmöglichkeit einer POST-Anfrage. Man kann mit einer POST-Anfrage auch Daten aus einem Formular an einen Prozess auf dem Server leiten, der die Daten weiterverarbeitet.
 Die Gemeinsamkeit aller POST-Anfragen ist, das der Paketinhalt vom Server weiterverarbeitet wird. Die Definitionen der anderen Methoden kann man im RFC 2616 nachlesen.
 \section{Header}
-Während man mit dem HTTP-Protokoll in der Version 0.9 nur HTML-Dateien verschicken konnte, ist es ab der Protokollversion 1.0 auch möglich andere Dateitypen zu verschicken. Das Protokoll ermöglicht es, dass ein Paket die Information enthält, welchen Dateityp das Paket verpackt. Diese Metadaten sind im Header. Der Header eines Pakets besteht aus einem oder mehreren Headerfeldern. Die Aufteilung in Metadaten und Pakethinhalt führt dazu, dass ein Antwort-Paket nach Protokollversion 1.0 eine andere Struktur hat als ein Paket nach Protokollversion 0.9. Während in Version 0.9 nur eine HTML-Datei enthalten ist, kann ein Antwort-Paket ab Version 1.0 auch einen Header enthalten, der den Inhalt des Paketes beschreibt. Die Kombination von Metadaten und Inhalt heißt Entity. Den Inhalt bezeichnet man auch als Payload oder Entity-Body.
-\begin{quote}   entity \linebreak
+Während man mit dem HTTP-Protokoll in der Version 0.9 nur HTML-Dateien
+verschicken konnte, ist es ab der Protokollversion 1.0 auch möglich andere
+Dateitypen zu verschicken. Der Dateityp der verpackten Datei wird im Paket
+vermerkt. Diese Metadaten sind im Header.
 
-       A particular representation or rendition of a data resource, or
-       reply from a service resource, that may be enclosed within a
-       request or response message. An entity consists of
-       metainformation in the form of entity headers and content in the
-       form of an entity body. \cite{Berners-Lee1996} \end{quote} \
+Der Header eines Pakets besteht aus einem oder mehreren Headerfeldern.
+Die Aufteilung in Metadaten und Pakethinhalt führt dazu, dass ein Antwort-Paket nach Protokollversion 1.0 eine andere Struktur hat als nach
+Protokollversion 0.9. In Version 0.9 ist nur eine HTML-Datei enthalten.
+Ab Version 1.0 kann auch einen Header enthalten sein, der den
+Inhalt des Pakets beschreibt. Die Kombination von Metadaten und Inhalt heißt Entity. Den Inhalt bezeichnet man auch als Payload oder Entity-Body. Eine Entity ist eine Repräsentation einer Ressource. Verschiedene Repräsentationen einer Datei entsprechen verschiedenen Dateitypen im Payload. \cite{Berners-Lee1996} 
    Es folgt ein Beispiel für ein Headerfeld.
 \begin{verbatim}
 Content-Type: text/html; charset=UTF-8
