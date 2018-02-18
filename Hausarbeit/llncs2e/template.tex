@@ -48,24 +48,31 @@ Der RFC 2616 ist die erste standardisierte Spezifikation von HTTP. \cite{Fieldin
 Mit HTTP/0.9 kann man Datenpakete über eine TCP Verbindung verschicken. Das Protokoll definiert welche Form die Datenpakete haben müssen, damit Client und Server kommunizieren können. Das Protokoll unterscheidet zwei Arten von Datenpaketen: Anfragen und Antworten. Anfragen werden vom Client an den Server geschickt. Antworten enthalten bei einer erfolgreichen Anfrage die angefragte Datei. Um eine HTML Datei zu empfangen, muss ein Client über eine TCP-Verbindung eine Anfrage schicken. In der Anfrage wird die Datei, die übertragen werden soll spezifiziert. Es folgt ein Beispiel für eine Anfrage.
 
 \lstset{ 
-  xleftmargin=.4\textwidth, xrightmargin=.2\textwidth
+  xleftmargin=.4\textwidth, xrightmargin=.2\textwidth,
+  basicstyle=\ttfamily
 }
-\begin{lstlisting}[caption={HTTP GET-Anfrage},label={lst:label},language=Java]
+\begin{lstlisting}[caption={HTTP GET-Anfrage},label={lst:get}]
 GET /index.html
 \end{lstlisting}
-\ \\
-Die Methode in~\ref{lst:label} ist GET. Sie bedeutet, dass eine Datei vom Server zum Client übertragen werden soll. Der Server, die IP-Adresse und der Port müssen in HTTP-Anfragen nicht spezifiziert werden. Das ist Aufgabe der unterliegenden Protokolle IP und TCP. Die GET-Methode bekommt als Parameter einen URI. Der URI ist die Adresse der Datei. Die Datei nennt man auch Ressource.
+
+Die Methode in~\ref{lst:get} ist GET. Sie bedeutet, dass eine Datei vom Server zum Client übertragen werden soll. Der Server, die IP-Adresse und der Port müssen in HTTP-Anfragen nicht spezifiziert werden. Das ist Aufgabe der unterliegenden Protokolle IP und TCP. Die GET-Methode bekommt als Parameter einen URI. Der URI ist die Adresse der Datei. Die Datei nennt man auch Ressource.
 
 Wenn eine Anfrage bei einem Server ankommt, muss er entscheiden, ob er die angeforderte HTML-Datei verschicken kann. Wenn er das kann ist die Antwort in der Protokollversion 0.9 die angefragte HTML-Datei. Der RFC 2616 bezeichnet das als ``raw data transfer''.
 
 Aufgrund des Anfrage-Antwort-Mechanismus, den HTTP nutzt, wird es der Gruppe der Request-Response-Protokolle zugeordnet. Die Codierung für die Protokollversionen 0.9, 1.0 und 1.1 ist ASCII. Das ist so, weil die Mindestanforderungen an einen Computer, der über HTTP kommunizieren sollte, möglichst gering sein sollten. Es wurde nur vorrausgesetzt, dass der Computer eine Tastatureingabe hatte und ASCII-Zeichen produzieren konnte. \cite{Berners-Lee1999}
 
-Die HTTP Version 0.9 eignet sich gut um den Request-Response-Charakter von HTTP anschaulich darzustellen, weil die Anfragen und Antworten sehr kompakt sein können. Es folgt ein Beispiel für eine Antwort, die mit HTTP 0.9 konform ist.
-\begin{verbatim}
+Die HTTP Version 0.9 eignet sich gut um den Request-Response-Charakter von HTTP anschaulich darzustellen, weil die Anfragen und Antworten sehr kompakt sein können. \ref{lst:html} zeigt ein Beispiel für eine Antwort, die mit HTTP 0.9 konform ist.
+
+\lstset{ 
+  xleftmargin=.2\textwidth, xrightmargin=.2\textwidth,
+  basicstyle=\ttfamily
+}
+\begin{lstlisting}[caption={Antwort-Paket nach HTTP 0.9},label={lst:html}]
 <html>
 <p>Das ist eine HTML-Datei.<\p>
 </html>
-\end{verbatim}
+\end{lstlisting}
+
 \section{Methoden}
 Der wichtigste Bestandteil eines HTTP-Pakets ist die Methode. Ein Datenaustausch zwischen Client und Server geht normalerweise vom Client aus. Der schickt ein Paket, das eine Methode enthält. Sie sagt dem Server was der Client will. Weiter oben wurde die GET-Methode beschrieben. Die beiden wichtigsten Methoden sind GET und HEAD. Sie müssen von allen HTTP-Servern unterstützt werden. \cite{Fielding1999} Außerdem gibt es OPTIONS, POST, PUT, DELETE, TRACE und CONNECT. 
 
@@ -82,24 +89,32 @@ Die Aufteilung in Metadaten und Pakethinhalt führt dazu, dass ein Antwort-Paket
 Protokollversion 0.9. In Version 0.9 ist nur eine HTML-Datei enthalten.
 Ab Version 1.0 kann auch einen Header enthalten sein, der den
 Inhalt des Pakets beschreibt. Die Kombination von Metadaten und Inhalt heißt Entity. Den Inhalt bezeichnet man auch als Payload oder Entity-Body. Eine Entity ist eine Repräsentation einer Ressource. Verschiedene Repräsentationen einer Datei entsprechen verschiedenen Dateitypen im Payload. \cite{Berners-Lee1996} 
-   Es folgt ein Beispiel für ein Headerfeld.
-\begin{verbatim}
+Listing \ref{lst:contentType} zeigt ein Beispiel für ein Headerfeld.
+\begin{lstlisting}[caption={Content-Type Headerfeld},label={lst:contentType}]
 Content-Type: text/html; charset=UTF-8
-\end{verbatim}
+\end{lstlisting} 
+
 Der hier gezeigte Header ist dafür da, um den Datentyp eines Paketinhalts anzuzeigen. Wie man oben sieht, sind Header Paare aus Name und Wert, die durch einen Doppelpunkt getrennt sind.
 
 Es gibt verschiedene Arten von Headern, die unterschiedliche Funktionen erfüllen. Sie sind in drei Gruppen eingeteilt: Allgemeine Headerfelder, Anfrage-Headerfelder, Antwort-Headerfelder und Entity-Headerfelder.
-Entity-Headerfelder beschreiben den Entity-Body. Anfrage-Headerfelder dürfen nur in Anfragen benutzt werden, Antwort-Headerfelder nur in Antworten.  Allgemeine Headerfelder sind in Anfragen und Antworten erlaubt. Ein Beispiel für ein allgemeines Headerfeld ist das Connection-Headerfeld: 
+Entity-Headerfelder beschreiben den Entity-Body. Anfrage-Headerfelder dürfen nur in Anfragen benutzt werden, Antwort-Headerfelder nur in Antworten.  Allgemeine Headerfelder sind in Anfragen und Antworten erlaubt. Listing \ref{lst:connection} zeigt ein Beispiel für ein allgemeines Headerfeld. 
 
-\begin{verbatim}
+\lstset{ 
+  xleftmargin=.35\textwidth, xrightmargin=.2\textwidth,
+  basicstyle=\ttfamily
+}
+\begin{lstlisting}[caption={Connection-Headerfeld},label={lst:connection}]
 Connection: close
-\end{verbatim}
+\end{lstlisting}
+
 Wenn dieses Headerfeld in einer Anfrage mitgeschickt wird, sagt es aus, dass die Verbindung nach Bearbeitung der Anfrage geschlossen werden kann. 
 \section{Statuscodes}
-Die Antworten nach Protokollversion 0.9 die oben als ''raw data transfer'' bezeichnet wurden, nennt der RFC 1945 Simple-Response. Die unterscheidet er von einer Full-Response. Das Unterscheidungsmerkmal ist eine Status-Line. Die Status-Line enthält die Protokollversion, einen Statuscode und eine textuelle Beschreibung des Statuscodes. Es folgt ein Beispiel.
-\begin{verbatim}
+Die Antworten nach Protokollversion 0.9 die oben als ''raw data transfer'' bezeichnet wurden, nennt der RFC 1945 Simple-Response. Die unterscheidet er von einer Full-Response. Das Unterscheidungsmerkmal ist eine Status-Line. Die Status-Line enthält die Protokollversion, einen Statuscode und eine textuelle Beschreibung des Statuscodes. Listing \ref{lst:302found} zeigt ein Beispiel.
+
+\begin{lstlisting}[caption={Statuscode 302},label={lst:302found}]
 HTTP/1.0 302 Found
-\end{verbatim}
+\end{lstlisting}
+
 Statuscodes beschreiben, ob der Server die Anfrage verstanden hat und ob er die gewünschte Aktion ausgeführt hat. Ein Statuscode ist eine Zahl zwischen 99 und 600. Alle Statuscodes mit der selben Hunderterstelle bilden eine Klasse.\newline
 Die Klasse 1xx heißt Informational. Sie sagt aus, dass das die Anfrage empfangen wurde und noch in Bearbeitung ist.\newline
 Die Klasse 2xx heißt Success. Sie sagt aus, dass die Anfrage empfangen, verstanden und akzeptiert wurde.\newline
