@@ -76,8 +76,13 @@ Die HTTP Version 0.9 eignet sich gut um den Request-Response-Charakter von HTTP 
 \section{Methoden}
 Der wichtigste Bestandteil eines HTTP-Pakets ist die Methode. Ein Datenaustausch zwischen Client und Server geht normalerweise vom Client aus. Der schickt ein Paket, das eine Methode enthält. Sie sagt dem Server was der Client will. Weiter oben wurde die GET-Methode beschrieben. Die beiden wichtigsten Methoden sind GET und HEAD. Sie müssen von allen HTTP-Servern unterstützt werden. \cite{Fielding1999} Außerdem gibt es OPTIONS, POST, PUT, DELETE, TRACE und CONNECT. 
 
-Mit der HEAD Methode kann Metadaten über eine Ressource abfragen, ohne sie zu übertragen. Die Antwort auf eine Anfrage mit der Methode HEAD enthält Headerfelder ohne den zugehörigen Paketinhalt.  PUT bedeutet, dass der Paketinhalt unter der angegebenen URI auf dem Server gespeichert werden soll. POST gibt eine übergeordnete URI an, unter der der Paketinhalt der Anfrage gespeichert werden soll. So wie man auf einem Dateisystem eine Datei in einem Ordner speichert. Die neue URI des Paketinhalts, der auf dem Server gespeichert wurde, wird in einer Antwort vom Server zurückgeschickt. Das ist eine Anwendungsmöglichkeit einer POST-Anfrage. Man kann mit einer POST-Anfrage auch Daten aus einem Formular an einen Prozess auf dem Server leiten, der die Daten weiterverarbeitet.
-Die Gemeinsamkeit aller POST-Anfragen ist, das der Paketinhalt vom Server weiterverarbeitet wird. Die Definitionen der anderen Methoden kann man im RFC 2616 nachlesen.
+\begin{itemize}  
+\item HEAD fragt Metadaten über eine Ressource ab, ohne sie zu übertragen. Die Antwort auf eine Anfrage mit der Methode HEAD enthält Headerfelder ohne den zugehörigen Paketinhalt.
+\item PUT bedeutet, dass der Paketinhalt unter der angegebenen URI auf dem Server gespeichert werden soll. 
+\item POST gibt eine übergeordnete URI an, unter der der Paketinhalt der Anfrage gespeichert werden soll. So wie man auf einem Dateisystem eine Datei in einem Ordner speichert. Die neue URI des Paketinhalts, der auf dem Server gespeichert wurde, wird in einer Antwort vom Server zurückgeschickt. Das ist eine Anwendungsmöglichkeit einer POST-Anfrage. Man kann mit einer POST-Anfrage auch Daten aus einem Formular an einen Prozess auf dem Server leiten, der die Daten weiterverarbeitet.
+Die Gemeinsamkeit aller POST-Anfragen ist, das der Paketinhalt vom Server weiterverarbeitet wird.
+\end{itemize}
+Die Definitionen der anderen Methoden kann man im RFC 2616 nachlesen.
 \section{Header}
 Während man mit dem HTTP-Protokoll in der Version 0.9 nur HTML-Dateien
 verschicken konnte, ist es ab der Protokollversion 1.0 auch möglich andere
@@ -115,13 +120,29 @@ Die Antworten nach Protokollversion 0.9 die oben als ''raw data transfer'' bezei
 HTTP/1.0 302 Found
 \end{lstlisting}
 
-Statuscodes beschreiben, ob der Server die Anfrage verstanden hat und ob er die gewünschte Aktion ausgeführt hat. Ein Statuscode ist eine Zahl zwischen 99 und 600. Alle Statuscodes mit der selben Hunderterstelle bilden eine Klasse.\newline
-Die Klasse 1xx heißt Informational. Sie sagt aus, dass das die Anfrage empfangen wurde und noch in Bearbeitung ist.\newline
-Die Klasse 2xx heißt Success. Sie sagt aus, dass die Anfrage empfangen, verstanden und akzeptiert wurde.\newline
-Die Klasse 3xx heißt Redirection. Sie sagt aus, dass weitere Aktionen nötig sind, um die Anfrage vollständig zu bearbeiten.\newline
-Die Klasse 4xx heißt Client Error. Sie sagt aus, dass die Anfrage syntaktisch nicht korrekt ist oder die gewünschte Aktion nicht ausgeführt werden kann.\newline
-Die Klasse 5xx heißt Server Error. Sie sagt aus, dass der Server eine in einer validen Anfrage gewünschte Aktion nicht durchführen konnte. \newline
-Diese Beschreibung sind Übersetzungen aus \cite{Fielding1999}. \newline
+Statuscodes beschreiben, ob der Server die Anfrage verstanden hat und ob er die gewünschte Aktion ausgeführt hat. Ein Statuscode ist eine Zahl zwischen 99 und 600. Alle Statuscodes mit der selben Hunderterstelle bilden eine Klasse.
+
+\begin{itemize}
+\item 1xx Informational
+
+Eine Anfrage wurde empfangen und ist noch in Bearbeitung.
+\item 2xx Success
+
+Die Anfrage wurde empfangen, verstanden und akzeptiert.
+\item 3xx Redirection
+
+Es sind weiter Aktionen nötig, um die Anfrage vollständig zu bearbeiten.
+\item 4xx Client Error
+
+Die Anfrage ist syntaktisch nicht korrekt oder die gewünschte Aktion kann nicht ausgeführt werden kann.
+\item 5xx Server Error
+
+Der Server konnte eine in einer validen Anfrage gewünschte Aktion nicht durchführen.
+\end{itemize}
+
+Diese Beschreibung sind Übersetzungen aus \cite{Fielding1999}. Es folgt ein exemplarisches Beispiel für einen Statuscode aus der Gruppe Redirection.
+
+
 Der Statuscode 302 aus der Klasse Redirection sagt aus, dass die angefragte Ressource temporär unter einem anderen URI erreichbar ist. Diese temporäre URI wird dem Client in der Antwort im Location-Headerfeld mitgeteilt. Der Client muss die neue URI anfragen, damit sein ursprünglicher Request vollständig bearbeitet wird. Das ist die weitere Aktion, die charakteristisch für Statuscodes der Klasse 3xx ist. 
    
 \section{Performanz und HTTP/2}
