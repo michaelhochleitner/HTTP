@@ -40,12 +40,10 @@ Durch das gemeinsame Dateiformat HTML (Hypertext Markup Language), die Verbindun
 
 Um Dateien auf einem Server für andere Computer zur Verfügung zu stellen, versendet man die Dateien in Datenpaketen. Dafür benötigt man ein Protokoll. Das Protokoll des World Wide Web ist HTTP, das Hypertext Transfer Protocol.
 \section{HTTP Grundlagen}
-\subsection{Versionsübersicht}
 HTTP wurde entwickelt, um das Internet und HTML kompatibel zu machen. HTTP gibt es in vier Versionen. Die Versionsnummern sind 0.9, 1.0 1.1 und 2. Definiert wird HTTP in Requests for Comments, die von der Internet Engineering Task Force (IETF) und der Internet Society (ISOC) herausgegeben werden.
 
 Die Versionsnummer 0.9 ist die Versionsnummer des ersten Prototypen von HTTP. 1.0 ist die erste Versionsnummer, die in einem RFC veröffentlich wurde. Der RFC 1945 beschreibt HTTP 1.0, der RFC 2616 beschreibt HTTP 1.1 und der RFC 7540 beschreibt HTTP 2.0.
 Der RFC 2616 ist die erste standardisierte Spezifikation von HTTP. \cite{Fielding1999}
-\subsection{HTTP als Request-Response-Protokoll}
 Mit HTTP/0.9 kann man Datenpakete über eine TCP Verbindung verschicken. Das Protokoll definiert welche Form die Datenpakete haben müssen, damit Client und Server kommunizieren können. Das Protokoll unterscheidet zwei Arten von Datenpaketen: Anfragen und Antworten. Anfragen werden vom Client an den Server geschickt. Antworten enthalten bei einer erfolgreichen Anfrage die angefragte Datei. Um eine HTML Datei zu empfangen, muss ein Client über eine TCP-Verbindung eine Anfrage schicken. In der Anfrage wird die Datei, die übertragen werden soll spezifiziert. Es folgt ein Beispiel für eine Anfrage.
 \begin{verbatim}
 GET /index.html
