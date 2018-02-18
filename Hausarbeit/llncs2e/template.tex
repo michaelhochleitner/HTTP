@@ -13,6 +13,7 @@
 \usepackage[ngerman]{babel}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{listings}
 \begin{document}
 \title{HTTP und HTTP/2}
 \author{Michael Hochleitner}
@@ -45,10 +46,15 @@ HTTP wurde entwickelt, um das Internet und HTML kompatibel zu machen. HTTP gibt 
 Die Versionsnummer 0.9 ist die Versionsnummer des ersten Prototypen von HTTP. 1.0 ist die erste Versionsnummer, die in einem RFC veröffentlich wurde. Der RFC 1945 beschreibt HTTP 1.0, der RFC 2616 beschreibt HTTP 1.1 und der RFC 7540 beschreibt HTTP 2.0.
 Der RFC 2616 ist die erste standardisierte Spezifikation von HTTP. \cite{Fielding1999}
 Mit HTTP/0.9 kann man Datenpakete über eine TCP Verbindung verschicken. Das Protokoll definiert welche Form die Datenpakete haben müssen, damit Client und Server kommunizieren können. Das Protokoll unterscheidet zwei Arten von Datenpaketen: Anfragen und Antworten. Anfragen werden vom Client an den Server geschickt. Antworten enthalten bei einer erfolgreichen Anfrage die angefragte Datei. Um eine HTML Datei zu empfangen, muss ein Client über eine TCP-Verbindung eine Anfrage schicken. In der Anfrage wird die Datei, die übertragen werden soll spezifiziert. Es folgt ein Beispiel für eine Anfrage.
-\begin{verbatim}
+
+\lstset{ 
+  xleftmargin=.4\textwidth, xrightmargin=.2\textwidth
+}
+\begin{lstlisting}[caption={HTTP GET-Anfrage},label={lst:label},language=Java]
 GET /index.html
-\end{verbatim}
-Die Methode in dieser Anfrage ist GET. Sie bedeutet, dass eine Datei vom Server zum Client übertragen werden soll. Der Server, die IP-Adresse und der Port müssen in HTTP-Anfragen nicht spezifiziert werden. Das ist Aufgabe der unterliegenden Protokolle IP und TCP. Die GET-Methode bekommt als Parameter einen URI. Der URI ist die Adresse der Datei. Die Datei nennt man auch Ressource.
+\end{lstlisting}
+\ \\
+Die Methode in~\ref{lst:label} ist GET. Sie bedeutet, dass eine Datei vom Server zum Client übertragen werden soll. Der Server, die IP-Adresse und der Port müssen in HTTP-Anfragen nicht spezifiziert werden. Das ist Aufgabe der unterliegenden Protokolle IP und TCP. Die GET-Methode bekommt als Parameter einen URI. Der URI ist die Adresse der Datei. Die Datei nennt man auch Ressource.
 
 Wenn eine Anfrage bei einem Server ankommt, muss er entscheiden, ob er die angeforderte HTML-Datei verschicken kann. Wenn er das kann ist die Antwort in der Protokollversion 0.9 die angefragte HTML-Datei. Der RFC 2616 bezeichnet das als ``raw data transfer''.
 
