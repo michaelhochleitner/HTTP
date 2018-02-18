@@ -14,6 +14,8 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{listings}
+\usepackage{hyperref} 
+
 \begin{document}
 \title{HTTP und HTTP/2}
 \author{Michael Hochleitner}
@@ -151,6 +153,8 @@ HTTP-Pakete werden über eine TCP-Verbindung verschickt. Eine effiziente Nutzung
 \begin{figure}[!ht]
 \includegraphics[width=\columnwidth]{yahooRequests}
 \caption{Aufrufen von https://de.yahoo.com am 19.02.2018 im Browser Chromium. Links unten sieht man die Anzahl der Anfragen.}
+
+
 \end{figure}
 
 
@@ -158,8 +162,7 @@ In der Protokollversion 0.9 gibt es pro Anfrage-Antwort-Paar nur eine TCP-Verbin
 
 \begin{figure}[!ht]
 \includegraphics[width=\columnwidth]{1200px-HTTP_pipelining2}
-\caption{Pipelining erlaubt es eine Anfrage zu senden ohne auf die Antwort der vorhergehenden Anfrage zu warten. Quelle: \newline https://en.wikipedia.org/wiki/HTTP\_pipelining\#/media/File:HTTP\_pipelining2.svg \newline
-Besucht am 21.01.2018.}
+\caption{Pipelining erlaubt es eine Anfrage zu senden ohne auf die Antwort der vorhergehenden Anfrage zu warten.\cite{Pipelining}}
 \end{figure}
 
 Wenn mehrere Anfragen in einer Pipeline auf einer TCP-Verbindung stehen, werden die Anfragen nacheinander abgearbeitet. Eine Anfrage deren Bearbeitung lange dauert kann die Bearbeitung der Anfragen dahinter verzögern. Dieses Phänomen heißt Head-of-line-Blocking oder HOL-Blocking. Wenn auf einer TCP-Verbindung HOL-Blocking auftritt kann eine neue Verbindung zum Server geöffnet werden, um neue Requests zu verschicken. Auf der neuen Verbin-dung kann wieder HOL-Blocking auftreten. Da die Anzahl der TCP-Verbindungen zwischen Client und Server begrenzt ist, können alle Verbindungen durch HOL-Blocking blockiert werden. HOL-Blocking ist ein Hindernis, dass die Ladezeit einer Website erheblich beeinträchtigen kann.
@@ -177,11 +180,10 @@ HOL-Blocking bedeutet, dass die Bearbeitung eines Pakets in einer Pipeline die B
  Auf der Ebene von TCP-Paketen gibt es auch HOL-Blocking. Dafür entwickelt Google ein alternatives Protokoll unter dem Namen QUIC.
  \begin{figure}[!ht]
 \includegraphics[width=\columnwidth]{Multiplexing.png}
-\caption{Interleaving: Mehrere Frames, die durcheinander auf einer TCP-Verbindung verschickt werden. Jeder Frame hat einen Stream Identifier. \newline
-Quelle: https://developers.google.com/web/fundamentals/performance/http2/ \newline
-Besucht am 21.01.2018.}
+\caption{Interleaving: Mehrere Frames, die durcheinander auf einer TCP-Verbindung verschickt werden. Jeder Frame hat einen Stream Identifier. 
+\cite{Interleaving}
+}
 \end{figure}
-
 
 
 \bibliographystyle{acm}
