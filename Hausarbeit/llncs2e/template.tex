@@ -60,13 +60,13 @@ Mit HTTP/0.9 kann man Datenpakete über eine TCP Verbindung verschicken. Das Pro
 GET /index.html
 \end{lstlisting}
 
-Die Methode in~\ref{lst:get} ist GET. Sie bedeutet, dass eine Datei vom Server zum Client übertragen werden soll. Der Server, die IP-Adresse und der Port müssen in HTTP-Anfragen nicht spezifiziert werden. Das ist Aufgabe der unterliegenden Protokolle IP und TCP. Die GET-Methode bekommt als Parameter einen URI. Der URI ist die Adresse der Datei. Die Datei nennt man auch Ressource.
+Die Methode in Listing \ref{lst:get} ist GET. Sie bedeutet, dass eine Datei vom Server zum Client übertragen werden soll. Der Server, die IP-Adresse und der Port müssen in HTTP-Anfragen nicht spezifiziert werden. Das ist Aufgabe der unterliegenden Protokolle IP und TCP. Die GET-Methode bekommt als Parameter einen URI. Der URI ist die Adresse der Datei. Die Datei nennt man auch Ressource.
 
 Wenn eine Anfrage bei einem Server ankommt, muss er entscheiden, ob er die angeforderte HTML-Datei verschicken kann. Wenn er das kann ist die Antwort in der Protokollversion 0.9 die angefragte HTML-Datei. Der RFC 2616 bezeichnet das als "`raw data transfer'' \cite{Fielding1999}.
 
 Aufgrund des Anfrage-Antwort-Mechanismus, den HTTP nutzt, wird es der Gruppe der Request-Response-Protokolle zugeordnet. Die Codierung für die Protokollversionen 0.9, 1.0 und 1.1 ist ASCII. Das ist so, weil die Mindestanforderungen an einen Computer, der über HTTP kommunizieren sollte, möglichst gering sein sollten. Es wurde nur vorrausgesetzt, dass der Computer eine Tastatureingabe hatte und ASCII-Zeichen produzieren konnte \cite{Berners-Lee1999}.
 
-Die HTTP Version 0.9 eignet sich gut, um den Request-Response-Charakter von HTTP anschaulich darzustellen, weil die Anfragen und Antworten sehr kompakt sein können. \ref{lst:html} zeigt ein Beispiel für eine Antwort, die mit HTTP 0.9 konform ist.
+Die HTTP Version 0.9 eignet sich gut, um den Request-Response-Charakter von HTTP anschaulich darzustellen, weil die Anfragen und Antworten sehr kompakt sein können. Listing \ref{lst:html} zeigt ein Beispiel für eine Antwort, die mit HTTP 0.9 konform ist.
 
 \begin{lstlisting}[caption={Antwort-Paket nach HTTP 0.9},label={lst:html}]
 <html>
