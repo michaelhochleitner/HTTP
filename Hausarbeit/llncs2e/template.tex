@@ -29,7 +29,7 @@ Wintersemester 2017/18
 
 \begin{abstract}
 HTTP ist ein Netzwerkprotokoll, das benutzt wird um Datenpakete zwischen Rechnern in Rechnernetzen auszutauschen. Es ist ein Request-Response-Protokoll. Die Datenpakete sind entweder Anfragen oder Antworten. Die erste Version HTTP/0.9 wurde 1990 entwickelt. Seitdem wurde das Protokoll in mehreren Protokollversionen erweitert. HTTP/1.0 bietet Metadaten über den Paketinhalt, mehrere Methoden, um verschiedene Absichten des Clients auszudrücken  und Statuscodes.
-Ein Schwerpunkt bei den Erweiterungen des Protokolls ist Performanz. Verbesserungen in der Performanz erreicht man durch effiziente Nutzung des unterliegenden Transportprotokolls. HTTP/1.1 erlaubt Pipelining von mehreren Anfragen auf einer TCP-Verbindung. Beim Pipelining tritt das Problem HOL-Blocking auf. Das wird in HTTP/2 durch Multiplexing umgangen.  Die prominenteste Anwendung, die HTTP nutzt, ist das World Wide Web, das auf dem Internet aufsitzt.
+Ein Schwerpunkt bei den Erweiterungen des Protokolls ist Performanz. Verbesserungen in der Performanz erreicht man durch effiziente Nutzung des unterliegenden Transportprotokolls. HTTP/1.1 erlaubt Pipe\-lining von mehreren Anfragen auf einer TCP-Verbindung. Beim Pipe\-lining tritt das Problem HOL-Blocking auf. Das wird in \mbox{HTTP/2} durch Multiplexing umgangen.  Die prominenteste Anwendung, die HTTP nutzt, ist das World Wide Web, das auf dem Internet aufsitzt.
 \keywords{Protokoll, Rechnernetze, Internet, World Wide Web, Hypertext, HTTP, HTTP/2}
 \end{abstract}
 
@@ -39,19 +39,22 @@ In der Forschungseinrichtung CERN in Genf arbeiteten in den 90er Jahren viele Le
 Das Dokumentationsystem baut auf den Technologien Internet, Hypertext und dem Aufrufen von Prozeduren auf anderen Computern, genannt RPC (Remote Procedure Call) auf. Es wurde bekannt unter dem Namen World Wide Web. Die Architektur des World Wide Web ist Client-Server. Der Client sollte ein Programm sein, mit dem man Hypertextseiten erstellen, durchblättern und editieren kann. Der Server sollte ein Programm sein, das die Hypertextseiten hält und den Benutzern des World Wide Web Zugriff darauf erlaubt.\cite{Berners-Lee1999}
 
 
-Durch das gemeinsame Dateiformat HTML (Hypertext Markup Language), die Verbindung von Computern über das Internet und das Abspeichern der HTML-Dateien auf einem Server wurde der Zugriff auf digitale Dokumente von Computern mit unterschiedlichen Betriebssystemen möglich.
+Durch das gemeinsame Dateiformat HTML (Hypertext Markup Language), die Verbindung von Computern über das Internet und das Abspeichern der HTML-Dateien auf einem Server, wurde der Zugriff auf digitale Dokumente von Computern mit unterschiedlichen Betriebssystemen möglich.
 
 Um Dateien auf einem Server für andere Computer zur Verfügung zu stellen, versendet man die Dateien in Datenpaketen. Dafür benötigt man ein Protokoll. Das Protokoll des World Wide Web ist HTTP, das Hypertext Transfer Protocol.
 \section{HTTP Grundlagen}
-HTTP wurde entwickelt, um das Internet und HTML kompatibel zu machen. HTTP gibt es in vier Versionen. Die Versionsnummern sind 0.9, 1.0 1.1 und 2. Definiert wird HTTP in Requests for Comments, die von der Internet Engineering Task Force (IETF) und der Internet Society (ISOC) herausgegeben werden.
+In diesem Kapitel werden die Spezifikationsdokumente für HTTP vorgestellt, es gibt eine Versionsübersicht und es werden einige grundlegende Eigenschaften des Protokolls anhand der Version 0.9 erläutert. 
+
+HTTP gibt es in vier Versionen. Die Versionsnummern sind 0.9, 1.0 1.1 und 2. Definiert wird HTTP in Requests for Comments (RFCs), die von der Internet Engineering Task Force (IETF) und der Internet Society (ISOC) herausgegeben werden. RFCs sind Dokumente, die öffentliche Standards zu Internettechnologien vorschlagen.
 
 Die Versionsnummer 0.9 ist die Versionsnummer des ersten Prototypen von HTTP. 1.0 ist die erste Versionsnummer, die in einem RFC veröffentlich wurde. Der RFC 1945 beschreibt HTTP 1.0, der RFC 2616 beschreibt HTTP 1.1 und der RFC 7540 beschreibt HTTP 2.0.
-Der RFC 2616 ist die erste standardisierte Spezifikation von HTTP. \cite{Fielding1999}
-Mit HTTP/0.9 kann man Datenpakete über eine TCP Verbindung verschicken. Das Protokoll definiert welche Form die Datenpakete haben müssen, damit Client und Server kommunizieren können. Das Protokoll unterscheidet zwei Arten von Datenpaketen: Anfragen und Antworten. Anfragen werden vom Client an den Server geschickt. Antworten enthalten bei einer erfolgreichen Anfrage die angefragte Datei. Um eine HTML Datei zu empfangen, muss ein Client über eine TCP-Verbindung eine Anfrage schicken. In der Anfrage wird die Datei, die übertragen werden soll spezifiziert. Es folgt ein Beispiel für eine Anfrage.
+Der RFC 2616 ist die erste standardisierte Spezifikation von HTTP.
+
+
+Mit HTTP/0.9 kann man Datenpakete über eine TCP Verbindung verschicken. Das Protokoll definiert welche Form die Datenpakete haben müssen, damit Client und Server kommunizieren können. Es unterscheidet zwei Arten von Datenpaketen: Anfragen und Antworten. Anfragen werden vom Client an den Server geschickt. Antworten enthalten bei einer erfolgreichen Anfrage die angefragte Datei. Um eine HTML Datei zu empfangen, muss ein Client über eine TCP-Verbindung eine Anfrage schicken. In der Anfrage wird die Datei, die übertragen werden soll spezifiziert. Es folgt ein Beispiel für eine Anfrage.
 
 \lstset{ 
-  xleftmargin=.4\textwidth, xrightmargin=.2\textwidth,
-  basicstyle=\ttfamily
+  basicstyle=\ttfamily, frame = single
 }
 \begin{lstlisting}[caption={HTTP GET-Anfrage},label={lst:get}]
 GET /index.html
@@ -65,10 +68,6 @@ Aufgrund des Anfrage-Antwort-Mechanismus, den HTTP nutzt, wird es der Gruppe der
 
 Die HTTP Version 0.9 eignet sich gut um den Request-Response-Charakter von HTTP anschaulich darzustellen, weil die Anfragen und Antworten sehr kompakt sein können. \ref{lst:html} zeigt ein Beispiel für eine Antwort, die mit HTTP 0.9 konform ist.
 
-\lstset{ 
-  xleftmargin=.2\textwidth, xrightmargin=.2\textwidth,
-  basicstyle=\ttfamily
-}
 \begin{lstlisting}[caption={Antwort-Paket nach HTTP 0.9},label={lst:html}]
 <html>
 <p>Das ist eine HTML-Datei.<\p>
@@ -106,10 +105,6 @@ Der hier gezeigte Header ist dafür da, um den Datentyp eines Paketinhalts anzuz
 Es gibt verschiedene Arten von Headern, die unterschiedliche Funktionen erfüllen. Sie sind in drei Gruppen eingeteilt: Allgemeine Headerfelder, Anfrage-Headerfelder, Antwort-Headerfelder und Entity-Headerfelder.
 Entity-Headerfelder beschreiben den Entity-Body. Anfrage-Headerfelder dürfen nur in Anfragen benutzt werden, Antwort-Headerfelder nur in Antworten.  Allgemeine Headerfelder sind in Anfragen und Antworten erlaubt. Listing \ref{lst:connection} zeigt ein Beispiel für ein allgemeines Headerfeld. 
 
-\lstset{ 
-  xleftmargin=.35\textwidth, xrightmargin=.2\textwidth,
-  basicstyle=\ttfamily
-}
 \begin{lstlisting}[caption={Connection-Headerfeld},label={lst:connection}]
 Connection: close
 \end{lstlisting}
