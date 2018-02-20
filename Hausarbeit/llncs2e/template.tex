@@ -29,7 +29,7 @@ Wintersemester 2017/18
 
 \begin{abstract}
 HTTP ist ein Netzwerkprotokoll, das benutzt wird um Datenpakete zwischen Rechnern in Rechnernetzen auszutauschen. Es ist ein Request-Response-Protokoll. Die Datenpakete sind entweder Anfragen oder Antworten. Die erste Version HTTP/0.9 wurde 1990 entwickelt. Seitdem wurde das Protokoll in mehreren Protokollversionen erweitert. HTTP/1.0 bietet Metadaten über den Paketinhalt, mehrere Methoden, um verschiedene Absichten des Clients auszudrücken  und Statuscodes.
-Ein Schwerpunkt bei den Erweiterungen des Protokolls ist Performanz. Verbesserungen in der Performanz erreicht man durch effiziente Nutzung des unterliegenden Transportprotokolls. HTTP/1.1 erlaubt Pipe\-lining von mehreren Anfragen auf einer TCP-Verbindung. Beim Pipe\-lining tritt das Problem HOL-Blocking auf. Das wird in \mbox{HTTP/2} durch Multiplexing umgangen.  Die prominenteste Anwendung, die HTTP nutzt, ist das World Wide Web, das auf dem Internet aufsitzt.
+Ein Schwerpunkt bei den Erweiterungen des Protokolls ist Performanz. Verbesserungen in der Performanz erreicht man durch effiziente Nutzung des unterliegenden Transportprotokolls. HTTP/1.1 erlaubt Pipe\-lining von mehreren Anfragen auf einer TCP-Verbind"-dung. Beim Pipe\-lining tritt das Problem HOL-Blocking auf. Das wird in \mbox{HTTP/2} durch Multiplexing umgangen.  Die prominenteste Anwendung, die HTTP nutzt, ist das World Wide Web, das auf dem Internet aufsitzt.
 \keywords{Protokoll, Rechnernetze, Internet, World Wide Web, Hypertext, HTTP, HTTP/2}
 \end{abstract}
 
@@ -51,7 +51,7 @@ Die Versionsnummer 0.9 ist die Versionsnummer des ersten Prototypen von HTTP. 1.
 Der RFC 2616 ist die erste standardisierte Spezifikation von HTTP.
 
 
-Mit HTTP/0.9 kann man Datenpakete über eine TCP Verbindung verschicken. Das Protokoll definiert welche Form die Datenpakete haben müssen, damit Client und Server kommunizieren können. Es unterscheidet zwei Arten von Datenpaketen: Anfragen und Antworten. Anfragen werden vom Client an den Server geschickt. Antworten enthalten bei einer erfolgreichen Anfrage die angefragte Datei. Um eine HTML Datei zu empfangen, muss ein Client über eine TCP-Verbindung eine Anfrage schicken. In der Anfrage wird die Datei, die übertragen werden soll spezifiziert. Es folgt ein Beispiel für eine Anfrage.
+Mit HTTP/0.9 kann man Datenpakete über eine TCP Verbindung verschicken. Das Protokoll definiert welche Form die Datenpakete haben müssen, damit Client und Server kommunizieren können. Es unterscheidet zwei Arten von Datenpaketen: Anfragen und Antworten. Anfragen werden vom Client an den Server geschickt. Antworten enthalten bei einer erfolgreichen Anfrage die angefragte Datei. Um eine HTML Datei zu empfangen, muss ein Client über eine TCP-Verbind"-dung eine Anfrage schicken. In der Anfrage wird die Datei, die übertragen werden soll spezifiziert. Es folgt ein Beispiel für eine Anfrage.
 
 \lstset{ 
   basicstyle=\ttfamily, frame = single
@@ -62,11 +62,11 @@ GET /index.html
 
 Die Methode in~\ref{lst:get} ist GET. Sie bedeutet, dass eine Datei vom Server zum Client übertragen werden soll. Der Server, die IP-Adresse und der Port müssen in HTTP-Anfragen nicht spezifiziert werden. Das ist Aufgabe der unterliegenden Protokolle IP und TCP. Die GET-Methode bekommt als Parameter einen URI. Der URI ist die Adresse der Datei. Die Datei nennt man auch Ressource.
 
-Wenn eine Anfrage bei einem Server ankommt, muss er entscheiden, ob er die angeforderte HTML-Datei verschicken kann. Wenn er das kann ist die Antwort in der Protokollversion 0.9 die angefragte HTML-Datei. Der RFC 2616 bezeichnet das als ``raw data transfer''.
+Wenn eine Anfrage bei einem Server ankommt, muss er entscheiden, ob er die angeforderte HTML-Datei verschicken kann. Wenn er das kann ist die Antwort in der Protokollversion 0.9 die angefragte HTML-Datei. Der RFC 2616 bezeichnet das als "`raw data transfer'' \cite{Fielding1999}.
 
-Aufgrund des Anfrage-Antwort-Mechanismus, den HTTP nutzt, wird es der Gruppe der Request-Response-Protokolle zugeordnet. Die Codierung für die Protokollversionen 0.9, 1.0 und 1.1 ist ASCII. Das ist so, weil die Mindestanforderungen an einen Computer, der über HTTP kommunizieren sollte, möglichst gering sein sollten. Es wurde nur vorrausgesetzt, dass der Computer eine Tastatureingabe hatte und ASCII-Zeichen produzieren konnte. \cite{Berners-Lee1999}
+Aufgrund des Anfrage-Antwort-Mechanismus, den HTTP nutzt, wird es der Gruppe der Request-Response-Protokolle zugeordnet. Die Codierung für die Protokollversionen 0.9, 1.0 und 1.1 ist ASCII. Das ist so, weil die Mindestanforderungen an einen Computer, der über HTTP kommunizieren sollte, möglichst gering sein sollten. Es wurde nur vorrausgesetzt, dass der Computer eine Tastatureingabe hatte und ASCII-Zeichen produzieren konnte \cite{Berners-Lee1999}.
 
-Die HTTP Version 0.9 eignet sich gut um den Request-Response-Charakter von HTTP anschaulich darzustellen, weil die Anfragen und Antworten sehr kompakt sein können. \ref{lst:html} zeigt ein Beispiel für eine Antwort, die mit HTTP 0.9 konform ist.
+Die HTTP Version 0.9 eignet sich gut, um den Request-Response-Charakter von HTTP anschaulich darzustellen, weil die Anfragen und Antworten sehr kompakt sein können. \ref{lst:html} zeigt ein Beispiel für eine Antwort, die mit HTTP 0.9 konform ist.
 
 \begin{lstlisting}[caption={Antwort-Paket nach HTTP 0.9},label={lst:html}]
 <html>
@@ -75,13 +75,13 @@ Die HTTP Version 0.9 eignet sich gut um den Request-Response-Charakter von HTTP 
 \end{lstlisting}
 
 \section{Methoden}
-Der wichtigste Bestandteil eines HTTP-Pakets ist die Methode. Ein Datenaustausch zwischen Client und Server geht normalerweise vom Client aus. Der schickt ein Paket, das eine Methode enthält. Sie sagt dem Server was der Client will. Weiter oben wurde die GET-Methode beschrieben. Die beiden wichtigsten Methoden sind GET und HEAD. Sie müssen von allen HTTP-Servern unterstützt werden. \cite{Fielding1999} Außerdem gibt es OPTIONS, POST, PUT, DELETE, TRACE und CONNECT. 
+Der wichtigste Bestandteil eines HTTP-Pakets ist die Methode. Ein Datenaustausch zwischen Client und Server geht normalerweise vom Client aus. Der schickt ein Paket, das eine Methode enthält. Sie sagt dem Server was der Client will. In Kapitel 2 wurde die GET-Methode beschrieben. Die beiden wichtigsten Methoden sind GET und HEAD. Sie müssen von allen HTTP-Servern unterstützt werden \cite{Fielding1999}. Außerdem gibt es OPTIONS, POST, PUT, DELETE, TRACE und CONNECT. 
 
 \begin{itemize}  
 \item HEAD fragt Metadaten über eine Ressource ab, ohne sie zu übertragen. Die Antwort auf eine Anfrage mit der Methode HEAD enthält Headerfelder ohne den zugehörigen Paketinhalt.
 \item PUT bedeutet, dass der Paketinhalt unter der angegebenen URI auf dem Server gespeichert werden soll. 
-\item POST gibt eine übergeordnete URI an, unter der der Paketinhalt der Anfrage gespeichert werden soll. So wie man auf einem Dateisystem eine Datei in einem Ordner speichert. Die neue URI des Paketinhalts, der auf dem Server gespeichert wurde, wird in einer Antwort vom Server zurückgeschickt. Das ist eine Anwendungsmöglichkeit einer POST-Anfrage. Man kann mit einer POST-Anfrage auch Daten aus einem Formular an einen Prozess auf dem Server leiten, der die Daten weiterverarbeitet.
-Die Gemeinsamkeit aller POST-Anfragen ist, das der Paketinhalt vom Server weiterverarbeitet wird.
+\item POST gibt eine übergeordnete URI an, unter der der Paketinhalt der Anfrage gespeichert werden soll. So wie man auf einem Dateisystem eine Datei in einem Ordner speichert. Die neue URI des Paketinhalts, der auf dem Server gespeichert wurde, wird in einer Antwort vom Server zurückgeschickt. Das ist eine Anwendungsmöglichkeit einer POST-Anfrage. Man kann mit einer POST-Anfrage auch Daten aus einem Formular an einen Prozess auf dem Server leiten, der die Daten weiterverarbeitet. Dieser Prozess kann die Daten aus dem Formular z.B. an eine Email-Adresse schicken.
+Die Gemeinsamkeit aller POST-Anfragen ist, dass der Paketinhalt vom Server weiterverarbeitet wird.
 \end{itemize}
 Die Definitionen der anderen Methoden kann man im RFC 2616 nachlesen.
 \section{Header}
@@ -102,7 +102,7 @@ Content-Type: text/html; charset=UTF-8
 
 Der hier gezeigte Header ist dafür da, um den Datentyp eines Paketinhalts anzuzeigen. Wie man oben sieht, sind Header Paare aus Name und Wert, die durch einen Doppelpunkt getrennt sind.
 
-Es gibt verschiedene Arten von Headern, die unterschiedliche Funktionen erfüllen. Sie sind in drei Gruppen eingeteilt: Allgemeine Headerfelder, Anfrage-Headerfelder, Antwort-Headerfelder und Entity-Headerfelder.
+Es gibt verschiedene Arten von Headern, die unterschiedliche Funktionen erfüllen. Sie sind in vier Gruppen eingeteilt: Allgemeine Headerfelder, Anfrage-Headerfelder, Antwort-Headerfelder und Entity-Headerfelder.
 Entity-Headerfelder beschreiben den Entity-Body. Anfrage-Headerfelder dürfen nur in Anfragen benutzt werden, Antwort-Headerfelder nur in Antworten.  Allgemeine Headerfelder sind in Anfragen und Antworten erlaubt. Listing \ref{lst:connection} zeigt ein Beispiel für ein allgemeines Headerfeld. 
 
 \begin{lstlisting}[caption={Connection-Headerfeld},label={lst:connection}]
@@ -111,7 +111,7 @@ Connection: close
 
 Wenn dieses Headerfeld in einer Anfrage mitgeschickt wird, sagt es aus, dass die Verbindung nach Bearbeitung der Anfrage geschlossen werden kann. 
 \section{Statuscodes}
-Die Antworten nach Protokollversion 0.9 die oben als ''raw data transfer'' bezeichnet wurden, nennt der RFC 1945 Simple-Response. Die unterscheidet er von einer Full-Response. Das Unterscheidungsmerkmal ist eine Status-Line. Die Status-Line enthält die Protokollversion, einen Statuscode und eine textuelle Beschreibung des Statuscodes. Listing \ref{lst:302found} zeigt ein Beispiel.
+Die Antworten nach Protokollversion 0.9 die im RFC2616 als "`raw data transfer'' bezeichnet werden, nennt der RFC 1945 Simple-Response. Die unterscheidet er von einer Full-Response. Das Unterscheidungsmerkmal ist eine Status-Line. Die Status-Line enthält die Protokollversion, einen Statuscode und eine textuelle Beschreibung des Statuscodes. Listing \ref{lst:302found} zeigt ein Beispiel.
 
 \begin{lstlisting}[caption={Statuscode 302},label={lst:302found}]
 HTTP/1.0 302 Found
@@ -137,47 +137,49 @@ Die Anfrage ist syntaktisch nicht korrekt oder die gewünschte Aktion kann nicht
 Der Server konnte eine in einer validen Anfrage gewünschte Aktion nicht durchführen.
 \end{itemize}
 
-Diese Beschreibung sind Übersetzungen aus \cite{Fiellding1999}. Es folgt ein exemplarisches Beispiel für einen Statuscode aus der Gruppe Redirection.
+Diese Beschreibung sind Übersetzungen aus \cite{Fielding1999}. Es folgt ein Beispiel für einen Statuscode aus der Gruppe Redirection.
 
 
 Der Statuscode 302 aus der Klasse Redirection sagt aus, dass die angefragte Ressource temporär unter einem anderen URI erreichbar ist. Diese temporäre URI wird dem Client in der Antwort im Location-Headerfeld mitgeteilt. Der Client muss die neue URI anfragen, damit sein ursprünglicher Request vollständig bearbeitet wird. Das ist die weitere Aktion, die charakteristisch für Statuscodes der Klasse 3xx ist. 
    
 \section{Performanz und HTTP/2}
-Zur Zeit der Protokollversion 0.9 bestanden Dokumente im World Wide Web nur aus Text, der als einzelne HTML-Datei versendet werden konnte. Im Laufe der Zeit stieg die Anzahl der Requests, die ein Browser sendet, um eine Seite im World Wide Web anzuzeigen. Man verschickt ca. 300 Anfragen wenn man die Seite https://de.yahoo.com/ aufruft. Siehe Abbildung 1.\newline Mit der Anzahl der Anfragen steigt auch die Anzahl der Dateien, die in Antworten zurückgesendet werden. Dementsprechend wurde HTTP im Laufe der Zeit angepasst. Den Benutzern des des World Wide Web sollen Internetseiten möglichst schnell angezeigt werden.
-HTTP-Pakete werden über eine TCP-Verbindung verschickt. Eine effiziente Nutzung der TCP-Verbindung ermöglicht es viele Datenpakete in kurzer Zeit zu übertragen und eine Internetseite schnell aufzubauen.
+Zur Zeit der Protokollversion 0.9 bestanden Dokumente im World Wide Web nur aus Text, der als einzelne HTML-Datei versendet werden konnte. Im Laufe der Zeit stieg die Anzahl der Requests, die ein Browser sendet, um eine Seite anzuzeigen. Man verschickt ca. 300 Anfragen wenn man die Seite https://de.yahoo.com/ aufruft. Siehe Abbildung \ref{fig:yahoo}.\newline Mit der Anzahl der Anfragen steigt auch die Anzahl der Dateien, die in Antworten zurückgesendet werden. Dementsprechend wurde HTTP im Laufe der Zeit angepasst. Den Benutzern des World Wide Web sollen Internetseiten möglichst schnell angezeigt werden.
+HTTP-Pakete werden über eine TCP-Verbind"-dung verschickt. Eine effiziente Nutzung der TCP-Verbind"-dung ermöglicht es viele Datenpakete in kurzer Zeit zu übertragen und eine Internetseite schnell aufzubauen.
 \begin{figure}[!ht]
 \includegraphics[width=\columnwidth]{yahooRequests}
 \caption{Aufrufen von https://de.yahoo.com am 19.02.2018 im Browser Chromium. Links unten sieht man die Anzahl der Anfragen.}
+\label{fig:yahoo}
 
 
 \end{figure}
 
 
-In der Protokollversion 0.9 gibt es pro Anfrage-Antwort-Paar nur eine TCP-Verbindung. Die Verbindung wird für eine Anfrage geöffnet und nach der Über-tragung der Antwort geschlossen. Das Öffnen und Schließen einer TCP-Verbindung ist ein Overhead. Um ihn zu entfernen wurden in HTTP/1.1 persistente Verbindungen eingeführt. Auf einer persistenten Verbindung kann man eine zweite Anfrage versenden ohne die Antwort auf die erste Anfrage abzuwarten. Das nennt der RFC 2616 Pipelining. Pipelining ist in Abbildung 2 dargestellt.
+In der Protokollversion 0.9 gibt es pro Anfrage-Antwort-Paar nur eine TCP-Verbind"-dung. Die Verbindung wird für eine Anfrage geöffnet und nach der Über-tragung der Antwort geschlossen. Das Öffnen und Schließen einer TCP-Verbind"-dung ist ein Overhead. Um ihn zu entfernen wurden in HTTP/1.1 persistente Verbindungen eingeführt. Auf einer persistenten Verbindung kann man eine zweite Anfrage versenden ohne die Antwort auf die erste Anfrage abzuwarten. Das nennt der RFC 2616 Pipelining. Pipelining ist in Abbildung 2 dargestellt.
 
 \begin{figure}[!ht]
 \includegraphics[width=\columnwidth]{1200px-HTTP_pipelining2}
-\caption{Pipelining erlaubt es eine Anfrage zu senden ohne auf die Antwort der vorhergehenden Anfrage zu warten.\cite{Pipelining}}
+\caption{Pipelining erlaubt es eine Anfrage zu senden, ohne auf die Antwort der vorhergehenden Anfrage zu warten.\cite{Pipelining}}
 \end{figure}
 
-Wenn mehrere Anfragen in einer Pipeline auf einer TCP-Verbindung stehen, werden die Anfragen nacheinander abgearbeitet. Eine Anfrage deren Bearbeitung lange dauert kann die Bearbeitung der Anfragen dahinter verzögern. Dieses Phänomen heißt Head-of-line-Blocking oder HOL-Blocking. Wenn auf einer TCP-Verbindung HOL-Blocking auftritt kann eine neue Verbindung zum Server geöffnet werden, um neue Requests zu verschicken. Auf der neuen Verbin-dung kann wieder HOL-Blocking auftreten. Da die Anzahl der TCP-Verbindungen zwischen Client und Server begrenzt ist, können alle Verbindungen durch HOL-Blocking blockiert werden. HOL-Blocking ist ein Hindernis, dass die Ladezeit einer Website erheblich beeinträchtigen kann.
+Wenn mehrere Anfragen in einer Pipeline auf einer TCP-Verbind"-dung stehen, werden die Anfragen nacheinander abgearbeitet. Eine Anfrage deren Bearbeitung lange dauert kann die Bearbeitung der Anfragen dahinter verzögern. Dieses Phänomen heißt Head-of-Line-Blocking oder HOL-Blocking. Wenn auf einer TCP-Verbind"-dung HOL-Blocking auftritt, kann eine neue Verbindung zum Server geöffnet werden, um neue Requests zu verschicken. Auf der neuen Verbin-dung kann wieder HOL-Blocking auftreten. Da die Anzahl der TCP-Verbind"-dungen zwischen Client und Server begrenzt ist, können alle Verbindungen durch HOL-Blocking blockiert werden. HOL-Blocking ist ein Hindernis, dass die Ladezeit einer Website erheblich beeinträchtigen kann.
 
-Um diesem Problem zu begegnen, wurde in HTTP/2 Multiplexing eingeführt. Multiplexing erlaubt es mehrere Antwort-Anfrage-Paare nebenläufig auf einer TCP-Verbindung zu versenden. Dafür werden Streams verwendet.
-Ein Stream ist eine unabhängige, bidirektionale Sequenz von Frames, die zwischen Client und Server in einer HTTP/2-Verbindung ausgetauscht werden.\cite{Belshe2015}
-Ein Frame ist die Grundeinheit in die Pakete nach HTTP/2 aufgeteilt werden. In HTTP/2 können Header und Payload eines Pakets in getrennten Frames versendet werden. Um die Frames dem selben Paket zuzuordnen hat jeder Frame einen Stream Identifier. Der Stream Identifier macht es möglich, dass die Bearbeitungsreihenfolge von Anfragen nicht die Reihenfolge sein muss in der sie gesendet wurden. Das ist die Eigenschaft von Streams, die HOL-Blocking umgeht. Wenn die Bearbeitung eines Frames lange dauert kann auf der selben TCP-Verbindung ein Frame eines anderen Streams verschickt werden. Das heißt Interleaving. Interleaving ist in Abbildung 3 dargestellt.
+Um diesem Problem zu begegnen, wurde in HTTP/2 Multiplexing eingeführt. Multiplexing erlaubt es mehrere Antwort-Anfrage-Paare nebenläufig auf einer TCP-Verbind"-dung zu versenden. Dafür werden Streams verwendet.
+Ein Stream ist eine unabhängige, bidirektionale Sequenz von Frames, die zwischen Client und Server in einer HTTP/2-Verbindung ausgetauscht werden \cite{Belshe2015}.
+Ein Frame ist die Grundeinheit in die Pakete nach HTTP/2 aufgeteilt werden. In HTTP/2 können Header und Payload eines Pakets in getrennten Frames versendet werden. Um die Frames dem selben Paket zuzuordnen, hat jeder Frame einen Stream Identifier. Der Stream Identifier macht es möglich, dass die Bearbeitungsreihenfolge von Anfragen nicht die Reihenfolge sein muss in der sie gesendet wurden. Das ist die Eigenschaft von Streams, die HOL-Blocking umgeht. Wenn die Bearbeitung eines Frames lange dauert, kann auf der selben TCP-Verbind"-dung ein Frame eines anderen Streams verschickt werden. Das heißt Interleaving. Interleaving ist in Abbildung \ref{Multiplexing} dargestellt.
 
 \section{Zusammenfassung}
-HTTP ist ein Request-Response-Protokoll, das zum Datenaustausch zwischen Computern über ein Rechnernetz genutzt wird. Es wurde ursprünglich für ein Dokumentationssystem entwickelt, das den Austausch digitaler Dokument zwischen Rechnern mit verschiedenen Betriebssystemen ermöglichen sollte. Dieses Dokumentationssystem hat sich zum World Wide Web entwickelt. 
-HTTP kommt zum Einsatz wenn ein Browser eine Internetseite von einem Server anfragt.\newline Ein HTTP-Paket enthält eine Methode, Metadaten und einen Payload. Die Methode drückt die Handlung aus, die der Client vom Server erwartet. Metadaten in HTTP-Paketen sind Header und Statuscodes. Der Payload ist eine Datei, die der Client zum Server übertragen will oder vom Server anfragt. \newline
+HTTP ist ein Request-Response-Protokoll, das zum Datenaustausch zwischen Computern über ein Rechnernetz genutzt wird. Es wurde ursprünglich für ein Dokumentationssystem entwickelt, das den Austausch digitaler Dokumente zwischen Rechnern mit verschiedenen Betriebssystemen ermöglichen sollte. Dieses Dokumentationssystem hat sich zum World Wide Web entwickelt. 
+HTTP kommt zum Einsatz, wenn ein Browser eine Internetseite von einem Server anfragt.\newline Ein HTTP-Paket enthält eine Methode, Metadaten und einen Payload. Die Methode drückt die Handlung aus, die der Client vom Server erwartet. Metadaten in HTTP-Paketen sind Header und Statuscodes. Der Payload ist eine Datei, die der Client zum Server übertragen will oder vom Server anfragt. \newline
 HTTP baut auf dem Transportprotokoll TCP auf.
-Die Verwendung von TCP-Verbindungen hat großen Einfluss darauf wie schnell eine Internetseite angezeigt werden kann. Die Verwendung der TCP-Verbindungen hat sich vom Öffnen und Schließen einer Verbindung für jede HTTP-Anfrage über persistente Verbindungen mit Pipelining zum Multiplexing entwickelt. \newline
+Die Verwendung von TCP-Verbind"-dungen hat großen Einfluss darauf wie schnell eine Internetseite angezeigt werden kann. Die Verwendung der TCP-Verbind"-dungen hat sich vom Öffnen und Schließen einer Verbindung für jede HTTP-Anfrage über persistente Verbindungen mit Pipelining zum Multiplexing entwickelt. \newline
 HOL-Blocking bedeutet, dass die Bearbeitung eines Pakets in einer Pipeline die Bearbeitung der folgenden Pakete blockiert. Auf Ebene von HTTP-Paketen wurde HOL-Blocking in HTTP/2 mit Multiplexing gelöst.
  Auf der Ebene von TCP-Paketen gibt es auch HOL-Blocking. Dafür entwickelt Google ein alternatives Protokoll unter dem Namen QUIC.
  \begin{figure}[!ht]
 \includegraphics[width=\columnwidth]{Multiplexing.png}
-\caption{Interleaving: Mehrere Frames, die durcheinander auf einer TCP-Verbindung verschickt werden. Jeder Frame hat einen Stream Identifier. 
+\caption{Interleaving: Mehrere Frames, die durcheinander auf einer TCP-Verbind"-dung verschickt werden. Jeder Frame hat einen Stream Identifier. 
 \cite{Interleaving}
 }
+\label{Multiplexing}
 \end{figure}
 
 
